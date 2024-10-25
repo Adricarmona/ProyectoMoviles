@@ -19,18 +19,17 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ProyectoMovilesTheme {
-
+                AcercaDe()
             }
         }
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     ProyectoMovilesTheme {
-        ProyectoMovilesTheme {
-
-        }
+        AcercaDe()
     }
 }
