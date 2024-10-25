@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import com.example.proyectomoviles.ui.theme.Pink80
 import com.example.proyectomoviles.ui.theme.ProyectoMovilesTheme
 import com.example.proyectomoviles.ui.theme.Purple80
@@ -29,10 +30,13 @@ fun AcercaDe() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Row {
+        Column {
             Text(
                 text = "AcercaDe",
                 color = PurpleGrey40,
+            )
+            Spacer(
+                modifier = Modifier.size(0.dp)
             )
             Image(
                 painter = painterResource(R.drawable.llantaoznegra),
