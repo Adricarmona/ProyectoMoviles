@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.example.proyectomoviles.ui.theme.Pink80
@@ -23,6 +25,8 @@ import com.example.proyectomoviles.ui.theme.PurpleGrey40
 
 @Composable
 fun AcercaDe() {
+    val context = LocalContext.current
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -31,16 +35,17 @@ fun AcercaDe() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column {
-            Text(
-                text = "AcercaDe",
-                color = PurpleGrey40,
+            Image(
+                painter = painterResource(R.drawable.llantaoznegra),
+                contentDescription = "Llanta de coche oz negra"
             )
             Spacer(
                 modifier = Modifier.size(0.dp)
             )
-            Image(
-                painter = painterResource(R.drawable.llantaoznegra),
-                contentDescription = "Llanta de coche oz negra"
+            Text(
+                text = context.getString(R.string.AcercaDe),
+                color = PurpleGrey40,
+                textAlign = TextAlign.Justify
             )
         }
     }
