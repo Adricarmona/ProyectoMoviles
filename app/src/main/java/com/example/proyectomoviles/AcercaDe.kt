@@ -91,7 +91,7 @@ fun AcercaDe() {
 }
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, locale = "es")
 @Composable
 fun previewAcercaDe() {
     ProyectoMovilesTheme{
@@ -109,7 +109,7 @@ fun EsteticaTitulo(text: String)
         fontStyle = FontStyle.Italic,
         fontWeight = FontWeight.Bold,
         fontSize = 12.em,
-        letterSpacing = 2.sp,
+        lineHeight = 66.sp,
         modifier = Modifier.width(250.dp)
     )
 }
