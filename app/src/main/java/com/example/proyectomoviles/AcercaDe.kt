@@ -21,8 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
-import com.example.proyectomoviles.ui.theme.ProyectoMovilesTheme
-import com.example.proyectomoviles.ui.theme.PurpleGrey40
+import com.example.proyectomoviles.ui.theme.TipografiaTitulo
 
 @Composable
 fun AcercaDe() {
@@ -105,11 +104,7 @@ fun EsteticaTitulo(text: String)
     Text(
         text = text,
         color = MaterialTheme.colorScheme.primary,
-        textAlign = TextAlign.Center,
-        fontStyle = FontStyle.Italic,
-        fontWeight = FontWeight.Bold,
-        fontSize = 12.em,
-        lineHeight = 66.sp,
+        style = TipografiaTitulo.bodyLarge,
         modifier = Modifier.width(250.dp)
     )
 }
