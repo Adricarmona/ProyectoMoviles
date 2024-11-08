@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
 
 
         if (acercaDeVisible){
-            AcercaDe()
+            Ayuda()
         }
     }
 }
