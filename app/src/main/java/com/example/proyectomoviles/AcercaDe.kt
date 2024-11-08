@@ -21,7 +21,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import com.example.proyectomoviles.ui.theme.EsteticaTitulo
+import com.example.proyectomoviles.ui.theme.TextoNormal
 import com.example.proyectomoviles.ui.theme.TipografiaTitulo
+import com.example.proyectomoviles.ui.theme.Typography
 
 @Composable
 fun AcercaDe() {
@@ -49,10 +52,12 @@ fun AcercaDe() {
             Parte de arriba debajo del icono con el titulo y el subtitulo gigantico
              */
             EsteticaTitulo(
-                context.getString(R.string.AcercaDe)
+                context.getString(R.string.AcercaDe),
+                TipografiaTitulo.bodyLarge
             )
             EsteticaTitulo(
-                "EcoRing"
+                "EcoRing",
+                TipografiaTitulo.bodyLarge
             )
             TextoNormal(
                 context.getString(R.string.TrabajoDeMoviles)
@@ -96,26 +101,4 @@ fun previewAcercaDe() {
     ProyectoMovilesTheme{
         AcercaDe()
     }
-}
-
-@Composable
-fun EsteticaTitulo(text: String)
-{
-    Text(
-        text = text,
-        color = MaterialTheme.colorScheme.primary,
-        style = TipografiaTitulo.bodyLarge,
-        modifier = Modifier.width(250.dp)
-    )
-}
-
-@Composable
-fun TextoNormal(text: String)
-{
-    Text(
-        text = text,
-        color = MaterialTheme.colorScheme.secondary,
-        textAlign = TextAlign.Center,
-        modifier = Modifier.width(250.dp)
-    )
 }
