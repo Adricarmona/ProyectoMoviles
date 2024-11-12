@@ -60,7 +60,8 @@ fun AcercaDe() {
                 TipografiaTitulo.bodyLarge
             )
             TextoNormal(
-                context.getString(R.string.TrabajoDeMoviles)
+                context.getString(R.string.TrabajoDeMoviles),
+                Modifier.width(250.dp)
             )
 
             /// ESPACIO ENTRE TITULO Y TEXTO
@@ -72,13 +73,16 @@ fun AcercaDe() {
 
             // el quienes aparecemos en la aplicacion
             TextoNormal(
-                context.getString(R.string.AplicacionCreada)
+                context.getString(R.string.AplicacionCreada),
+                Modifier.width(250.dp)
             )
             TextoNormal(
-                "- Adrian Carmona"
+                "- Adrian Carmona",
+                Modifier.width(250.dp)
             )
             TextoNormal(
-                "- Hector Dominguez"
+                "- Hector Dominguez",
+                Modifier.width(250.dp)
             )
 
             Spacer(

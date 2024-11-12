@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ProyectoMovilesTheme {
-                botonPantalla()
+                configuracion()
             }
         }
     }
