@@ -26,19 +26,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.findViewTreeLifecycleOwner
+import com.example.proyectomoviles.dataStore.ConfiguracionDataStore
 import com.example.proyectomoviles.ui.theme.CheckboxYTexto
 import com.example.proyectomoviles.ui.theme.EsteticaTitulo
 import com.example.proyectomoviles.ui.theme.TipografiaTitulo
 import com.example.proyectomoviles.ui.theme.SwitchYTexto
+import kotlinx.coroutines.launch
+
 
 @Composable
 fun configuracion() {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope() // el scoped
+    val dataStore = ConfiguracionDataStore(context) // el data store
+
+    var idioma = remember { mutableStateOf("") }
 
     var subscribirseCorreosPromocionales = remember { mutableStateOf(false) }
     var subscribirseCorreosNoticias = remember { mutableStateOf(false) }
@@ -105,17 +116,27 @@ fun configuracion() {
             ) {
                 DropdownMenuItem(
                     text = {Text("Idioma del sistema")},
-                    onClick = { toastAleatorio(context) }
+                    onClick = {
+                        toastAleatorio(context)
+                        idioma.value = "Idioma del sistema"
+                    }
                 )
 
                 DropdownMenuItem(
                     text = {Text("Ingles")},
-                    onClick = { toastAleatorio(context) }
+                    onClick = {
+                        toastAleatorio(context)
+                        idioma.value = "Ingles"
+                    }
+
                 )
 
                 DropdownMenuItem(
                     text = {Text("Español")},
-                    onClick = { toastAleatorio(context) }
+                    onClick = {
+                        toastAleatorio(context)
+                        idioma.value = "Ingles"
+                    }
                 )
             }
         }
@@ -176,20 +197,28 @@ fun configuracion() {
             El boton de guardar
          */
         Spacer(modifier = Modifier.height(40.dp))
-        Button(onClick = {aceptaPrivacidad(context,terminosCondiciones.value, privacidad.value)}) {
+        Button(onClick = {
+            aceptaPrivacidad(context,terminosCondiciones.value, privacidad.value)
+            scope.launch {
+                dataStore.guardarOpciones(
+                    idioma = idioma.value,
+                    correosPromocionales = subscribirseCorreosPromocionales.value,
+                    correosNoticias = subscribirseCorreosNoticias.value,
+                    terminos = terminosCondiciones.value,
+                    privacidad = privacidad.value,
+                    ayudaPagina = ayuda.value,
+                    sobreNosotrosPagina = sobreNosotros.value,
+                    configuracionPagina = configuracion.value,)
+            }
+        }) {
             Text("guardar")
         }
     }
 }
 
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, locale = "es")
-@Composable
-fun previewConfiguracion() {
-    ProyectoMovilesTheme{
-        configuracion()
-    }
-}
+/*
+ * Los toast, privacidad y uno aleatorio
+ */
 
 fun aceptaPrivacidad(context: Context,terminos: Boolean, privacidad: Boolean){
     if (terminos == privacidad && terminos == true) {
@@ -205,6 +234,10 @@ fun toastAleatorio(context: Context){
 }
 
 
+/*
+ *  Los radio groups
+ */
+
 @Composable
 fun radioGroupASC(
     ayuda: MutableState<Boolean>,
@@ -216,7 +249,7 @@ fun radioGroupASC(
     ProyectoMovilesTheme {
         Column {
             /*
-                AYUDA
+             *  AYUDA
              */
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -239,7 +272,7 @@ fun radioGroupASC(
             }
 
             /*
-                sobreNosotros
+             *  sobreNosotros
              */
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -262,8 +295,8 @@ fun radioGroupASC(
             }
 
             /*
-                Configuracion
-            */
+             *   Configuracion
+             */
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
@@ -296,4 +329,19 @@ fun desSeleccionar(
     ayuda.value = false
     sobreNosotros.value = false
     configuracion.value = false
+}
+
+
+/*
+ * LA Preview
+ */
+
+
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, locale = "es")
+@Composable
+fun previewConfiguracion() {
+    ProyectoMovilesTheme{
+        configuracion()
+    }
 }
