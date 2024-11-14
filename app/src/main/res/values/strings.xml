@@ -1,7 +1,25 @@
 <resources>
-    <string name="app_name">EcoRing</string>
+    <string name="app_name" translatable="false">EcoRing</string>
     <string name="AcercaDe">About us</string>
     <string name="AplicacionCreada">Application created by:</string>
     <string name="TrabajoDeMoviles">Work on multimedia programming and mobile devices, application on types of vehicle tires</string>
     <string name="Configuracion">Configuration</string>
+    <string name="IdiomaEstetico">─── Language ───</string>
+    <string name="Idioma_aplicacion">Application language</string>
+    <string name="Idioma_del_sistema">System language</string>
+    <string name="Ingles">English</string>
+    <string name="Español">Spanish</string>
+    <string name="OpcionesDeCorreoEstetico">─── Mail Options ───</string>
+    <string name="EnviarCorreosPromocionales">Send promotional emails</string>
+    <string name="EnviarCorreosDeNoticias">Send news emails</string>
+    <string name="TerminosCondicionesPrivacidadEstetico">─── Terms, Conditions and Privacy ───</string>
+    <string name="TerminosYCondiciones">Terms and conditions</string>
+    <string name="AceptarPrivacidad">Accept privacy</string>
+    <string name="PaginaDeInicioEstetica">─── Home Page ───</string>
+    <string name="Guardar">save</string>
+    <string name="AceptadoCorrectamenteAmbos">Accepted both correctly</string>
+    <string name="DenegadoAmbosApartados">Both sections denied</string>
+    <string name="FuncionaElOnClick">onClick works</string>
+    <string name="Ayuda">Help</string>
+    <string name="SobreNosotros">About us</string>
 </resources>

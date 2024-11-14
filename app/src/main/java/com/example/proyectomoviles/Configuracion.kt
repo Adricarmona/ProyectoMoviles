@@ -87,7 +87,7 @@ fun configuracion() {
          */
         Spacer(modifier = Modifier.height(40.dp))
         Text(
-            text = "─── Idioma ───",
+            text = context.getString(R.string.IdiomaEstetico),
             color = MaterialTheme.colorScheme.secondary,
         )
         Row(
@@ -95,7 +95,7 @@ fun configuracion() {
 
         ) {
             Text(
-                text = "Idioma aplicacion",
+                text = context.getString(R.string.Idioma_aplicacion),
                 color = MaterialTheme.colorScheme.primary)
             IconButton(
                 onClick = {
@@ -115,7 +115,7 @@ fun configuracion() {
                 }
             ) {
                 DropdownMenuItem(
-                    text = {Text("Idioma del sistema")},
+                    text = {Text(context.getString(R.string.Idioma_del_sistema))},
                     onClick = {
                         toastAleatorio(context)
                         idioma.value = "Idioma del sistema"
@@ -123,7 +123,7 @@ fun configuracion() {
                 )
 
                 DropdownMenuItem(
-                    text = {Text("Ingles")},
+                    text = {Text(context.getString(R.string.Ingles))},
                     onClick = {
                         toastAleatorio(context)
                         idioma.value = "Ingles"
@@ -132,7 +132,7 @@ fun configuracion() {
                 )
 
                 DropdownMenuItem(
-                    text = {Text("Español")},
+                    text = {Text(context.getString(R.string.Español))},
                     onClick = {
                         toastAleatorio(context)
                         idioma.value = "Ingles"
@@ -147,15 +147,15 @@ fun configuracion() {
          */
         Spacer(modifier = Modifier.height(40.dp))
         Text(
-            text = "─── Opciones de correo ───",
+            text = context.getString(R.string.OpcionesDeCorreoEstetico),
             color = MaterialTheme.colorScheme.secondary,
         )
         CheckboxYTexto(
-            "Enviar correos promocionales",
+            context.getString(R.string.EnviarCorreosPromocionales),
             subscribirseCorreosPromocionales
         )
         CheckboxYTexto(
-            "Enviar correos de noticias",
+            context.getString(R.string.EnviarCorreosDeNoticias),
             subscribirseCorreosNoticias
         )
 
@@ -164,15 +164,15 @@ fun configuracion() {
          */
         Spacer(modifier = Modifier.height(40.dp))
         Text(
-            text = "─── Terminos, Condiciones y Privacidad ───",
+            text = context.getString(R.string.TerminosCondicionesPrivacidadEstetico),
             color = MaterialTheme.colorScheme.secondary,
         )
         SwitchYTexto(
-            "Terminos y condiciones",
+            context.getString(R.string.TerminosYCondiciones),
             terminosCondiciones
         )
         SwitchYTexto(
-            "Aceptar privacidad",
+            context.getString(R.string.AceptarPrivacidad),
             privacidad
         )
 
@@ -181,11 +181,12 @@ fun configuracion() {
          */
         Spacer(modifier = Modifier.height(40.dp))
         Text(
-            text = "─── Pagina de inicio ───",
+            text = context.getString(R.string.PaginaDeInicioEstetica),
             color = MaterialTheme.colorScheme.secondary,
         )
 
         radioGroupASC(
+            context,
             ayuda,
             sobreNosotros,
             configuracion
@@ -211,7 +212,7 @@ fun configuracion() {
                     configuracionPagina = configuracion.value,)
             }
         }) {
-            Text("guardar")
+            Text(context.getString(R.string.Guardar))
         }
     }
 }
@@ -222,15 +223,15 @@ fun configuracion() {
 
 fun aceptaPrivacidad(context: Context,terminos: Boolean, privacidad: Boolean){
     if (terminos == privacidad && terminos == true) {
-        Toast.makeText(context, "Aceptado correctamente ambos", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, context.getString(R.string.AceptadoCorrectamenteAmbos), Toast.LENGTH_LONG).show();
     } else {
-        Toast.makeText(context, "Denegado ambos apartados", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, context.getString(R.string.DenegadoAmbosApartados), Toast.LENGTH_LONG).show();
     }
 
 }
 
 fun toastAleatorio(context: Context){
-    Toast.makeText(context, "funciona el onClick", Toast.LENGTH_SHORT).show();
+    Toast.makeText(context, context.getString(R.string.FuncionaElOnClick), Toast.LENGTH_SHORT).show();
 }
 
 
@@ -240,6 +241,7 @@ fun toastAleatorio(context: Context){
 
 @Composable
 fun radioGroupASC(
+    context: Context,
     ayuda: MutableState<Boolean>,
     sobreNosotros: MutableState<Boolean>,
     configuracion: MutableState<Boolean>
@@ -266,7 +268,7 @@ fun radioGroupASC(
                     )
                 )
                 Text(
-                    text = "Ayuda",
+                    text = context.getString(R.string.Ayuda),
                     color = MaterialTheme.colorScheme.secondary,
                 )
             }
@@ -289,7 +291,7 @@ fun radioGroupASC(
                     )
                 )
                 Text(
-                    text = "Sobre nosotros",
+                    text = context.getString(R.string.SobreNosotros),
                     color = MaterialTheme.colorScheme.secondary,
                 )
             }
@@ -312,7 +314,7 @@ fun radioGroupASC(
                     )
                 )
                 Text(
-                    text = "Sobre nosotros",
+                    text = context.getString(R.string.Configuracion),
                     color = MaterialTheme.colorScheme.secondary,
                 )
             }
