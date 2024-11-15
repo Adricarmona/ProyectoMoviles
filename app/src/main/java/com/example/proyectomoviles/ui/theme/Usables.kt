@@ -1,18 +1,11 @@
 package com.example.proyectomoviles.ui.theme
 
-import android.R
-import android.content.Context
-import android.graphics.Paint
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.RadioButtonColors
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -66,7 +59,7 @@ fun TextoNormal(text: String, modifier: Modifier =Modifier.width(500.dp))
 }
 
 @Composable
-fun SwitchYTexto(text: String, variable: Boolean)
+fun SwitchYTexto(text: String, variable: MutableState<Boolean>)
 {
     ProyectoMovilesTheme {
         Row(
@@ -74,8 +67,8 @@ fun SwitchYTexto(text: String, variable: Boolean)
             horizontalArrangement = Arrangement.Center
         ) {
             Switch(
-                checked = variable,
-                onCheckedChange = { variable = !variable },
+                checked = variable.value,
+                onCheckedChange = { variable.value = it },
                 colors = SwitchDefaults.colors(
                     checkedThumbColor = MaterialTheme.colorScheme.primary,
                     checkedTrackColor = MaterialTheme.colorScheme.primaryContainer,

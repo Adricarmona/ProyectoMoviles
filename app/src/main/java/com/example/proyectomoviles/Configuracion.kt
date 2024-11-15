@@ -3,7 +3,6 @@ package com.example.proyectomoviles
 import android.content.Context
 import android.content.res.Configuration
 import android.widget.Toast
-import androidx.annotation.RestrictTo
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,21 +26,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.findViewTreeLifecycleOwner
 import com.example.proyectomoviles.dataStore.ConfiguracionDataStore
-import com.example.proyectomoviles.ui.theme.CheckboxYTexto
 import com.example.proyectomoviles.ui.theme.EsteticaTitulo
 import com.example.proyectomoviles.ui.theme.TipografiaTitulo
 import com.example.proyectomoviles.ui.theme.SwitchYTexto
@@ -195,11 +188,11 @@ fun configuracion() {
         )
         SwitchYTexto(
             context.getString(R.string.TerminosYCondiciones),
-            terminosCondiciones.value
+            terminosCondiciones as MutableState<Boolean>
         )
         SwitchYTexto(
             context.getString(R.string.AceptarPrivacidad),
-            privacidad.value
+            privacidad as MutableState<Boolean>
         )
 
         /*
@@ -213,9 +206,9 @@ fun configuracion() {
 
         radioGroupASC(
             context,
-            ayuda.value,
-            sobreNosotros.value,
-            configuracion.value
+            ayuda as MutableState<Boolean>,
+            sobreNosotros as MutableState<Boolean>,
+            configuracion as MutableState<Boolean>
         )
 
 
@@ -268,9 +261,9 @@ fun toastAleatorio(context: Context){
 @Composable
 fun radioGroupASC(
     context: Context,
-    ayuda: Boolean,
-    sobreNosotros: Boolean,
-    configuracion: Boolean
+    ayuda: MutableState<Boolean>,
+    sobreNosotros: MutableState<Boolean>,
+    configuracion: MutableState<Boolean>
 ){
 
 
@@ -284,13 +277,14 @@ fun radioGroupASC(
                 horizontalArrangement = Arrangement.Center
             ) {
                 RadioButton(
-                    selected = ayuda,
+                    selected = ayuda.value,
                     onClick = {
-                        desSeleccionar(ayuda, sobreNosotros, configuracion);
-                        scope.launch {
-                            dataStore.save(!ayuda) // Replace with your actual save function
-                        }
-                    },
+                        desSeleccionar(
+                            ayuda ,
+                            sobreNosotros ,
+                            configuracion )
+                        ayuda.value = !ayuda.value
+                              },
                     colors = RadioButtonColors(
                         selectedColor = MaterialTheme.colorScheme.primary,
                         disabledSelectedColor = MaterialTheme.colorScheme.secondary,
@@ -313,8 +307,14 @@ fun radioGroupASC(
                 horizontalArrangement = Arrangement.Center
             ) {
                 RadioButton(
-                    selected = sobreNosotros,
-                    onClick = { desSeleccionar(ayuda,sobreNosotros,configuracion); sobreNosotros = !sobreNosotros },
+                    selected = sobreNosotros.value,
+                    onClick = {
+                        desSeleccionar(
+                            ayuda,
+                            sobreNosotros,
+                            configuracion)
+                        sobreNosotros.value = !sobreNosotros.value
+                              },
                     colors = RadioButtonColors(
                         selectedColor = MaterialTheme.colorScheme.primary,
                         disabledSelectedColor = MaterialTheme.colorScheme.secondary,
@@ -336,8 +336,14 @@ fun radioGroupASC(
                 horizontalArrangement = Arrangement.Center
             ) {
                 RadioButton(
-                    selected = configuracion,
-                    onClick = { desSeleccionar(ayuda,sobreNosotros,configuracion); configuracion = !configuracion },
+                    selected = configuracion.value,
+                    onClick = {
+                        desSeleccionar(
+                            ayuda,
+                            sobreNosotros,
+                            configuracion)
+                        configuracion.value = !configuracion.value
+                              },
                     colors = RadioButtonColors(
                         selectedColor = MaterialTheme.colorScheme.primary,
                         disabledSelectedColor = MaterialTheme.colorScheme.secondary,
@@ -355,14 +361,14 @@ fun radioGroupASC(
 }
 
 fun desSeleccionar(
-    ayuda: Boolean,
-    sobreNosotros: Boolean,
-    configuracion: Boolean
+    ayuda: MutableState<Boolean>,
+    sobreNosotros: MutableState<Boolean>,
+    configuracion: MutableState<Boolean>
 )
 {
-    ayuda = false
-    sobreNosotros = false
-    configuracion = false
+    ayuda.value = false
+    sobreNosotros.value = false
+    configuracion.value = false
 }
 
 
