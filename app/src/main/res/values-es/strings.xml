@@ -21,5 +21,13 @@
     <string name="DenegadoAmbosApartados">Denegado ambos apartados</string>
     <string name="FuncionaElOnClick">funciona el onClick</string>
     <string name="Ayuda">Ayuda</string>
+    <string name="Ayudatxt">Bienvenido a la sección de Ayuda. Aquí encontrarás respuestas a las preguntas frecuentes y guías para hacer tu experiencia de compra de llantas más fácil y rápida.</string>
+    <string name="FAQtxt">Preguntas Frecuentes (FAQ)</string>
+    <string name="BuscarLlantasTxt">¿Cómo busco llantas para mi vehículo?\nIngresa la marca, modelo y año de tu vehículo en el buscador para obtener llantas compatibles. También puedes buscar por medidas específicas o por tipo de llanta si ya tienes esos datos.</string>
+    <string name="RealizarCompraTxt">¿Cómo realizo una compra?\nUna vez seleccionada la llanta, agrégala al carrito y sigue los pasos en pantalla para completar tu compra. Puedes pagar con tarjeta de crédito, débito o métodos de pago alternativos.</string>
+    <string name="MetodosEnvioTxt">¿Qué métodos de envío ofrecen?\nOfrecemos envío a domicilio y también puedes optar por recoger tus llantas en una tienda cercana. Los tiempos de envío y costos varían según la ubicación.</string>
+    <string name="DevolucionesTxt">¿Puedo devolver o cambiar mis llantas?\nLas devoluciones o cambios están permitidos dentro de los primeros 30 días después de la compra. Las llantas deben estar sin usar y en su empaque original. Consulta nuestra política de devoluciones para más detalles.</string>
+    <string name="ContactoTxt">Contacto\nSi necesitas más ayuda o tienes una consulta específica, puedes contactarnos:\nCorreo electrónico: soporte@llantas.com\nTeléfono: +34 123 456 789\nHorario de atención: Lunes a viernes de 9:00 a 18:00</string>
+    <string name="ConsejosCompraTxt">Consejos para tu compra\nRevisa bien las especificaciones de tus llantas antes de comprarlas para asegurar la compatibilidad con tu vehículo.\nAprovecha las promociones y descuentos especiales que encontrarás en la sección de Ofertas.</string>
     <string name="SobreNosotros">Sobre nosotros</string>
 </resources>

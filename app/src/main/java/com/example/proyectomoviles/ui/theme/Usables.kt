@@ -40,6 +40,19 @@ fun EsteticaTitulo(text: String, style: TextStyle, modifier: Modifier = Modifier
 }
 
 @Composable
+fun EsteticaMiniTitulo(text: String, style: TextStyle, modifier: Modifier = Modifier.width(375.dp))
+{
+    ProyectoMovilesTheme {
+        Text(
+            text = text,
+            color = MaterialTheme.colorScheme.primary,
+            style = style,
+            modifier = modifier
+        )
+    }
+}
+
+@Composable
 fun TextoNormal(text: String, modifier: Modifier =Modifier.width(500.dp))
 {
     ProyectoMovilesTheme {

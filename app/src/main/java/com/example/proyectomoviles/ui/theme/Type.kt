@@ -30,6 +30,16 @@ val TipografiaTitulo = Typography(
     )
 )
 
+val TipografiaMiniTitulo = Typography(
+    bodyLarge = TextStyle(
+        textAlign = TextAlign.Center,
+        fontStyle = FontStyle.Italic,
+        fontWeight = FontWeight.Bold,
+        fontSize = 5.em,
+        lineHeight = 66.sp,
+    )
+)
+
 
 
 
