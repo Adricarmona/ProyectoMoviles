@@ -66,7 +66,7 @@ fun TextoNormal(text: String, modifier: Modifier =Modifier.width(500.dp))
 }
 
 @Composable
-fun SwitchYTexto(text: String, variable: MutableState<Boolean>)
+fun SwitchYTexto(text: String, variable: Boolean)
 {
     ProyectoMovilesTheme {
         Row(
@@ -74,8 +74,8 @@ fun SwitchYTexto(text: String, variable: MutableState<Boolean>)
             horizontalArrangement = Arrangement.Center
         ) {
             Switch(
-                checked = variable.value,
-                onCheckedChange = { variable.value = it },
+                checked = variable,
+                onCheckedChange = { variable = !variable },
                 colors = SwitchDefaults.colors(
                     checkedThumbColor = MaterialTheme.colorScheme.primary,
                     checkedTrackColor = MaterialTheme.colorScheme.primaryContainer,

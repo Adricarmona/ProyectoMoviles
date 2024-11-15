@@ -3,6 +3,7 @@ package com.example.proyectomoviles
 import android.content.Context
 import android.content.res.Configuration
 import android.widget.Toast
+import androidx.annotation.RestrictTo
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.List
 import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -24,9 +26,12 @@ import androidx.compose.material3.RadioButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -49,20 +54,20 @@ fun configuracion() {
     val scope = rememberCoroutineScope() // el scoped
     val dataStore = ConfiguracionDataStore(context) // el data store
 
-    var idioma = remember { mutableStateOf("") }
+    var idioma = dataStore.getIdioma.collectAsState(initial = "Idioma del sistema")
 
-    var subscribirseCorreosPromocionales = remember { mutableStateOf(false) }
-    var subscribirseCorreosNoticias = remember { mutableStateOf(false) }
+    var subscribirseCorreosPromocionales = dataStore.getCorreosPromocionales.collectAsState(initial = false)
+    var subscribirseCorreosNoticias = dataStore.getCorreosNoticias.collectAsState(initial = false)
 
 
-    var privacidad = remember { mutableStateOf(false) }
-    var terminosCondiciones = remember { mutableStateOf(false) }
+    var privacidad = dataStore.getPrivacidad.collectAsState(initial = false)
+    var terminosCondiciones = dataStore.getTerminos.collectAsState(initial = false)
 
     var expandidoDropdownMenu = remember { mutableStateOf(false) }
 
-    var ayuda = remember { mutableStateOf(false) }
-    var sobreNosotros = remember { mutableStateOf(false) }
-    var configuracion = remember { mutableStateOf(false) }
+    var ayuda = dataStore.getAyudaPagina.collectAsState(initial = false)
+    var sobreNosotros = dataStore.getSobreNosotrosPagina.collectAsState(initial = false)
+    var configuracion = dataStore.getConfiguracionPagina.collectAsState(initial = false)
 
     Column(
         modifier = Modifier
@@ -118,7 +123,7 @@ fun configuracion() {
                     text = {Text(context.getString(R.string.Idioma_del_sistema))},
                     onClick = {
                         toastAleatorio(context)
-                        idioma.value = "Idioma del sistema"
+                        scope.launch { dataStore.saveIdioma("Idioma del sistema") }
                     }
                 )
 
@@ -126,7 +131,7 @@ fun configuracion() {
                     text = {Text(context.getString(R.string.Ingles))},
                     onClick = {
                         toastAleatorio(context)
-                        idioma.value = "Ingles"
+                        scope.launch { dataStore.saveIdioma("English") }
                     }
 
                 )
@@ -135,7 +140,7 @@ fun configuracion() {
                     text = {Text(context.getString(R.string.Español))},
                     onClick = {
                         toastAleatorio(context)
-                        idioma.value = "Ingles"
+                        scope.launch { dataStore.saveIdioma("Español") }
                     }
                 )
             }
@@ -150,15 +155,36 @@ fun configuracion() {
             text = context.getString(R.string.OpcionesDeCorreoEstetico),
             color = MaterialTheme.colorScheme.secondary,
         )
-        CheckboxYTexto(
-            context.getString(R.string.EnviarCorreosPromocionales),
-            subscribirseCorreosPromocionales
-        )
-        CheckboxYTexto(
-            context.getString(R.string.EnviarCorreosDeNoticias),
-            subscribirseCorreosNoticias
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Checkbox(
+                checked = subscribirseCorreosPromocionales.value,
+                onCheckedChange = { isChecked ->
+                    scope.launch {
+                        dataStore.saveCorreosPromocionales(isChecked)
+                    }
+                }
+            )
 
+            Checkbox(
+                checked = subscribirseCorreosNoticias.value,
+                onCheckedChange = { isChecked ->
+                    scope.launch {
+                        dataStore.saveCorreosNoticias(isChecked)
+                    }
+                }
+            )
+
+            Spacer(
+                modifier = Modifier.width(10.dp)
+            )
+            Text(
+                text = "si",
+                color = MaterialTheme.colorScheme.secondary,
+            )
+        }
         /*
             Terminos, condiciones y privacidad
          */
@@ -169,11 +195,11 @@ fun configuracion() {
         )
         SwitchYTexto(
             context.getString(R.string.TerminosYCondiciones),
-            terminosCondiciones
+            terminosCondiciones.value
         )
         SwitchYTexto(
             context.getString(R.string.AceptarPrivacidad),
-            privacidad
+            privacidad.value
         )
 
         /*
@@ -187,9 +213,9 @@ fun configuracion() {
 
         radioGroupASC(
             context,
-            ayuda,
-            sobreNosotros,
-            configuracion
+            ayuda.value,
+            sobreNosotros.value,
+            configuracion.value
         )
 
 
@@ -201,15 +227,15 @@ fun configuracion() {
         Button(onClick = {
             aceptaPrivacidad(context,terminosCondiciones.value, privacidad.value)
             scope.launch {
-                dataStore.guardarOpciones(
-                    idioma = idioma.value,
-                    correosPromocionales = subscribirseCorreosPromocionales.value,
-                    correosNoticias = subscribirseCorreosNoticias.value,
-                    terminos = terminosCondiciones.value,
-                    privacidad = privacidad.value,
-                    ayudaPagina = ayuda.value,
-                    sobreNosotrosPagina = sobreNosotros.value,
-                    configuracionPagina = configuracion.value,)
+                dataStore.saveIdioma(idioma = idioma.value)
+                dataStore.saveCorreosPromocionales(correosPromocionales = subscribirseCorreosPromocionales.value)
+                dataStore.saveCorreosNoticias(correosNoticias = subscribirseCorreosNoticias.value)
+                dataStore.saveTerminos(terminos = terminosCondiciones.value)
+                dataStore.savePrivacidad(privacidad = privacidad.value)
+                dataStore.saveAyudaPagina(ayudaPagina = ayuda.value)
+                dataStore.saveConfiguracionPagina(configuracionPagina = configuracion.value)
+                dataStore.saveSobreNosotrosPagina(sobreNosotrosPagina = sobreNosotros.value)
+
             }
         }) {
             Text(context.getString(R.string.Guardar))
@@ -242,9 +268,9 @@ fun toastAleatorio(context: Context){
 @Composable
 fun radioGroupASC(
     context: Context,
-    ayuda: MutableState<Boolean>,
-    sobreNosotros: MutableState<Boolean>,
-    configuracion: MutableState<Boolean>
+    ayuda: Boolean,
+    sobreNosotros: Boolean,
+    configuracion: Boolean
 ){
 
 
@@ -258,8 +284,13 @@ fun radioGroupASC(
                 horizontalArrangement = Arrangement.Center
             ) {
                 RadioButton(
-                    selected = ayuda.value,
-                    onClick = { desSeleccionar(ayuda,sobreNosotros,configuracion); ayuda.value = !ayuda.value },
+                    selected = ayuda,
+                    onClick = {
+                        desSeleccionar(ayuda, sobreNosotros, configuracion);
+                        scope.launch {
+                            dataStore.save(!ayuda) // Replace with your actual save function
+                        }
+                    },
                     colors = RadioButtonColors(
                         selectedColor = MaterialTheme.colorScheme.primary,
                         disabledSelectedColor = MaterialTheme.colorScheme.secondary,
@@ -267,6 +298,7 @@ fun radioGroupASC(
                         disabledUnselectedColor = MaterialTheme.colorScheme.primaryContainer
                     )
                 )
+
                 Text(
                     text = context.getString(R.string.Ayuda),
                     color = MaterialTheme.colorScheme.secondary,
@@ -281,8 +313,8 @@ fun radioGroupASC(
                 horizontalArrangement = Arrangement.Center
             ) {
                 RadioButton(
-                    selected = sobreNosotros.value,
-                    onClick = { desSeleccionar(ayuda,sobreNosotros,configuracion); sobreNosotros.value = !sobreNosotros.value },
+                    selected = sobreNosotros,
+                    onClick = { desSeleccionar(ayuda,sobreNosotros,configuracion); sobreNosotros = !sobreNosotros },
                     colors = RadioButtonColors(
                         selectedColor = MaterialTheme.colorScheme.primary,
                         disabledSelectedColor = MaterialTheme.colorScheme.secondary,
@@ -304,8 +336,8 @@ fun radioGroupASC(
                 horizontalArrangement = Arrangement.Center
             ) {
                 RadioButton(
-                    selected = configuracion.value,
-                    onClick = { desSeleccionar(ayuda,sobreNosotros,configuracion); configuracion.value = !configuracion.value },
+                    selected = configuracion,
+                    onClick = { desSeleccionar(ayuda,sobreNosotros,configuracion); configuracion = !configuracion },
                     colors = RadioButtonColors(
                         selectedColor = MaterialTheme.colorScheme.primary,
                         disabledSelectedColor = MaterialTheme.colorScheme.secondary,
@@ -323,14 +355,14 @@ fun radioGroupASC(
 }
 
 fun desSeleccionar(
-    ayuda: MutableState<Boolean>,
-    sobreNosotros: MutableState<Boolean>,
-    configuracion: MutableState<Boolean>
+    ayuda: Boolean,
+    sobreNosotros: Boolean,
+    configuracion: Boolean
 )
 {
-    ayuda.value = false
-    sobreNosotros.value = false
-    configuracion.value = false
+    ayuda = false
+    sobreNosotros = false
+    configuracion = false
 }
 
 
