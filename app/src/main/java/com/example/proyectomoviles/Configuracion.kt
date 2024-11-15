@@ -160,7 +160,18 @@ fun configuracion() {
                     }
                 }
             )
-
+            Spacer(
+                modifier = Modifier.width(10.dp)
+            )
+            Text(
+                text = context.getString(R.string.EnviarCorreosPromocionales),
+                color = MaterialTheme.colorScheme.secondary,
+            )
+        }
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
             Checkbox(
                 checked = subscribirseCorreosNoticias.value,
                 onCheckedChange = { isChecked ->
@@ -174,7 +185,7 @@ fun configuracion() {
                 modifier = Modifier.width(10.dp)
             )
             Text(
-                text = "si",
+                text = context.getString(R.string.EnviarCorreosDeNoticias),
                 color = MaterialTheme.colorScheme.secondary,
             )
         }
@@ -283,7 +294,7 @@ fun radioGroupASC(
                             ayuda ,
                             sobreNosotros ,
                             configuracion )
-                        ayuda.value = !ayuda.value
+                        ayuda.value = true
                               },
                     colors = RadioButtonColors(
                         selectedColor = MaterialTheme.colorScheme.primary,
@@ -313,7 +324,7 @@ fun radioGroupASC(
                             ayuda,
                             sobreNosotros,
                             configuracion)
-                        sobreNosotros.value = !sobreNosotros.value
+                        sobreNosotros.value = true
                               },
                     colors = RadioButtonColors(
                         selectedColor = MaterialTheme.colorScheme.primary,
@@ -342,7 +353,7 @@ fun radioGroupASC(
                             ayuda,
                             sobreNosotros,
                             configuracion)
-                        configuracion.value = !configuracion.value
+                        configuracion.value = true
                               },
                     colors = RadioButtonColors(
                         selectedColor = MaterialTheme.colorScheme.primary,
