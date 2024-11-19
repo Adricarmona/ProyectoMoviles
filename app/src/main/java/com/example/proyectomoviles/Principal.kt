@@ -78,11 +78,11 @@ fun alertDialogDoc(openDialog: MutableState<Boolean>) {
                 openDialog.value = false
             },
             title = {
-                Text(text = "Salir de la aplicacion")
+                Text(text = context.getString(R.string.salirAplicacion))
             },
             text = {
                 Text(
-                    "¿Estas seguro de salir de EcoRing?"
+                    context.getString(R.string.SeguroDeSalir)
                 )
             },
             confirmButton = {
@@ -92,7 +92,7 @@ fun alertDialogDoc(openDialog: MutableState<Boolean>) {
                         activity?.finishAffinity()
                     }
                 ) {
-                    Text("Aceptar")
+                    Text(context.getString(R.string.aceptar))
                 }
             },
             dismissButton = {
@@ -101,7 +101,7 @@ fun alertDialogDoc(openDialog: MutableState<Boolean>) {
                         openDialog.value = false
                     }
                 ) {
-                    Text("Salir")
+                    Text(context.getString(R.string.salir))
                 }
             }
         )
