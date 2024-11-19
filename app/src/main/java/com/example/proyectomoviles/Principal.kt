@@ -27,10 +27,13 @@ import com.example.proyectomoviles.model.Rutas
 import com.example.proyectomoviles.ui.theme.EsteticaTitulo
 import com.example.proyectomoviles.ui.theme.TipografiaTitulo
 import com.example.proyectomoviles.ui.theme.Typography
+import kotlin.contracts.contract
 
 @Composable
 fun Principal(navController: NavController) {
+    val context = LocalContext.current
     val openDialog = remember { mutableStateOf(false) }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,25 +44,25 @@ fun Principal(navController: NavController) {
     ) {
         Image(
             painter = painterResource(R.drawable.ecoring),
-            contentDescription = "icono electrospeed",
+            contentDescription = "icono ecoring",
         )
         Spacer(modifier = Modifier.height(80.dp))
         Button(onClick = { navController.navigate(Rutas.Ayuda.route) }) {
-            Text("Ayuda")
+            Text(context.getString(R.string.ayuda))
         }
         Spacer(modifier = Modifier.height(8.dp))
         Button(onClick = { navController.navigate(Rutas.AcercaDe.route) }) {
-            Text("Acerca De")
+            Text(context.getString(R.string.AcercaDe))
         }
         Spacer(modifier = Modifier.height(8.dp))
         Button(onClick = { navController.navigate(Rutas.Configuracion.route) }) {
-            Text("Configuración")
+            Text(context.getString(R.string.configuracion))
         }
         Spacer(modifier = Modifier.height(8.dp))
         Button(onClick = {
             openDialog.value = true
         }) {
-            Text("Salir")
+            Text(context.getString(R.string.salir))
         }
 
         if (openDialog.value) {

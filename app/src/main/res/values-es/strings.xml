@@ -34,4 +34,6 @@
     <string name="SeguroDeSalir">¿Estas seguro de salir de EcoRing?</string>
     <string name="aceptar">Aceptar</string>
     <string name="salir">Salir</string>
+    <string name="configuracion">Configuracion</string>
+    <string name="ayuda">Ayuda</string>
 </resources>
