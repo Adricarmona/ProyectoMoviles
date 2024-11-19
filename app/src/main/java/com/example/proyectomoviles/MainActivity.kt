@@ -50,27 +50,4 @@ class MainActivity : ComponentActivity() {
             composable(Rutas.Configuracion.route) { Configuracion(navController) }
         }
     }
-
-    /*@Composable
-    fun botonPantalla(){
-        var acercaDeVisible by remember { mutableStateOf(false) }
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(color = MaterialTheme.colorScheme.background),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-
-            ) {
-            Button(onClick = { acercaDeVisible = true}) {
-                Text(text = "ver pantalla")
-            }
-        }
-
-
-        if (acercaDeVisible){
-            Ayuda()
-        }
-    }*/
 }
