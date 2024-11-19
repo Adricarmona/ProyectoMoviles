@@ -6,6 +6,4 @@ data class configuracionInterfaz(
     val correosNoticias: Boolean,
     val terminos: Boolean,
     val privacidad: Boolean,
-    val ayudaPagina: Boolean,
-    val sobreNosotrosPagina: Boolean,
-    val configuracionPagina: Boolean)
+    val Pagina: Int)
