@@ -34,7 +34,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.proyectomoviles.dataStore.ConfiguracionDataStore
+import com.example.proyectomoviles.model.Rutas
 import com.example.proyectomoviles.ui.theme.EsteticaTitulo
 import com.example.proyectomoviles.ui.theme.TipografiaTitulo
 import com.example.proyectomoviles.ui.theme.SwitchYTexto
@@ -42,7 +44,7 @@ import kotlinx.coroutines.launch
 
 
 @Composable
-fun configuracion() {
+fun Configuracion(navController: NavController) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope() // el scoped
     val dataStore = ConfiguracionDataStore(context) // el data store
@@ -239,6 +241,7 @@ fun configuracion() {
                 dataStore.saveAyudaPagina(ayudaPagina = ayuda.value)
                 dataStore.saveConfiguracionPagina(configuracionPagina = configuracion.value)
                 dataStore.saveSobreNosotrosPagina(sobreNosotrosPagina = sobreNosotros.value)
+                navController.navigate(Rutas.Principal.route)
 
             }
         }) {
@@ -388,11 +391,11 @@ fun desSeleccionar(
  */
 
 
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+/*@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, locale = "es")
 @Composable
 fun previewConfiguracion() {
     ProyectoMovilesTheme{
-        configuracion()
+        Configuracion()
     }
-}
+}*/

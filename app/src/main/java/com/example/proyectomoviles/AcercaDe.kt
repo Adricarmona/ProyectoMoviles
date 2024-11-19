@@ -21,13 +21,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.proyectomoviles.ui.theme.EsteticaTitulo
 import com.example.proyectomoviles.ui.theme.TextoNormal
 import com.example.proyectomoviles.ui.theme.TipografiaTitulo
 import com.example.proyectomoviles.ui.theme.Typography
 
 @Composable
-fun AcercaDe() {
+fun AcercaDe(navController: NavController) {
     val context = LocalContext.current
 
     Column(
@@ -98,11 +99,11 @@ fun AcercaDe() {
     }
 }
 
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+/*@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, locale = "es")
 @Composable
 fun previewAcercaDe() {
     ProyectoMovilesTheme{
         AcercaDe()
     }
-}
+}*/

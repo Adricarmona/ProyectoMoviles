@@ -21,6 +21,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.proyectomoviles.model.Rutas
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +32,26 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ProyectoMovilesTheme {
-                configuracion()
+                AppNavigation()
             }
         }
     }
-
     @Composable
+    fun AppNavigation() {
+        val navController = rememberNavController()
+
+        NavHost(
+            navController = navController,
+            startDestination = Rutas.Principal.route
+        ) {
+            composable(Rutas.Principal.route) { Principal(navController) }
+            composable(Rutas.Ayuda.route) { Ayuda(navController) }
+            composable(Rutas.AcercaDe.route) { AcercaDe(navController) }
+            composable(Rutas.Configuracion.route) { Configuracion(navController) }
+        }
+    }
+
+    /*@Composable
     fun botonPantalla(){
         var acercaDeVisible by remember { mutableStateOf(false) }
 
@@ -54,5 +72,5 @@ class MainActivity : ComponentActivity() {
         if (acercaDeVisible){
             Ayuda()
         }
-    }
+    }*/
 }

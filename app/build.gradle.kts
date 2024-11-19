@@ -82,3 +82,11 @@ dependencies {
     implementation ("androidx.datastore:datastore-preferences-rxjava3:1.0.0")
 
 }
+
+/*
+    La navegacion
+ */
+dependencies {
+
+    implementation("androidx.navigation:navigation-compose:2.8.4")
+}

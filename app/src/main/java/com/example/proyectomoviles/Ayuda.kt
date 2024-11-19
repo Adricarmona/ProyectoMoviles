@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.proyectomoviles.ui.theme.EsteticaMiniTitulo
 import com.example.proyectomoviles.ui.theme.EsteticaTitulo
 import com.example.proyectomoviles.ui.theme.TextoNormal
@@ -27,7 +28,7 @@ import com.example.proyectomoviles.ui.theme.TipografiaMiniTitulo
 import com.example.proyectomoviles.ui.theme.TipografiaTitulo
 
 @Composable
-fun Ayuda() {
+fun Ayuda(navController: NavHostController) {
     val context = LocalContext.current
 
     Column (
@@ -77,14 +78,12 @@ fun Ayuda() {
         )
     }
 
-
-
 }
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+/*@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, locale = "es")
 @Composable
 fun previewAyuda() {
     ProyectoMovilesTheme{
         Ayuda()
     }
-}
+}*/
