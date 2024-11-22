@@ -47,22 +47,26 @@ fun Principal(navController: NavController) {
             contentDescription = "icono ecoring",
         )
         Spacer(modifier = Modifier.height(80.dp))
-        Button(onClick = { navController.navigate(Rutas.Ayuda.route) }) {
-            Text(context.getString(R.string.ayuda))
+        Button(onClick = { navController.navigate(Rutas.Ayuda.route) },
+        shape = MaterialTheme.shapes.small) {
+            Text("🆘"+context.getString(R.string.ayuda))
         }
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = { navController.navigate(Rutas.AcercaDe.route) }) {
-            Text(context.getString(R.string.AcercaDe))
+        Button(onClick = { navController.navigate(Rutas.AcercaDe.route) },
+            shape = MaterialTheme.shapes.small) {
+            Text("👬"+context.getString(R.string.AcercaDe))
         }
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = { navController.navigate(Rutas.Configuracion.route) }) {
-            Text(context.getString(R.string.configuracion))
+        Button(onClick = { navController.navigate(Rutas.Configuracion.route) },
+            shape = MaterialTheme.shapes.small) {
+            Text("🛠"+context.getString(R.string.configuracion))
         }
         Spacer(modifier = Modifier.height(8.dp))
         Button(onClick = {
             openDialog.value = true
-        }) {
-            Text(context.getString(R.string.salir))
+        },
+            shape = MaterialTheme.shapes.small) {
+            Text("🚪"+context.getString(R.string.salir))
         }
 
         if (openDialog.value) {
