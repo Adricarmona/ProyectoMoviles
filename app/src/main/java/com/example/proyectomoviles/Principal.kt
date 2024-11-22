@@ -1,7 +1,6 @@
 package com.example.proyectomoviles
 
 import android.app.Activity
-import android.app.Dialog
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,10 +23,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.proyectomoviles.model.Rutas
-import com.example.proyectomoviles.ui.theme.EsteticaTitulo
-import com.example.proyectomoviles.ui.theme.TipografiaTitulo
-import com.example.proyectomoviles.ui.theme.Typography
-import kotlin.contracts.contract
 
 @Composable
 fun Principal(navController: NavController) {
@@ -108,7 +103,7 @@ fun alertDialogDoc(openDialog: MutableState<Boolean>) {
                         openDialog.value = false
                     }
                 ) {
-                    Text(context.getString(R.string.salir))
+                    Text(context.getString(R.string.cancelar))
                 }
             }
         )
