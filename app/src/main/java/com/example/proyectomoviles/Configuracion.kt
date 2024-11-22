@@ -24,6 +24,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonColors
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -62,9 +64,7 @@ fun Configuracion(navController: NavController) {
 
     var expandidoDropdownMenu = remember { mutableStateOf(false) }
 
-    var ayuda = dataStore.getAyudaPagina.collectAsState(initial = false)
-    var sobreNosotros = dataStore.getSobreNosotrosPagina.collectAsState(initial = false)
-    var configuracion = dataStore.getConfiguracionPagina.collectAsState(initial = false)
+    var pagina = dataStore.getPagina.collectAsState(initial = 0)
 
     Column(
         modifier = Modifier
@@ -202,6 +202,7 @@ fun Configuracion(navController: NavController) {
             text = context.getString(R.string.TerminosCondicionesPrivacidadEstetico),
             color = MaterialTheme.colorScheme.secondary,
         )
+
         SwitchYTexto(
             context.getString(R.string.TerminosYCondiciones),
             terminosCondiciones as MutableState<Boolean>
@@ -222,9 +223,7 @@ fun Configuracion(navController: NavController) {
 
         radioGroupASC(
             context,
-            ayuda as MutableState<Boolean>,
-            sobreNosotros as MutableState<Boolean>,
-            configuracion as MutableState<Boolean>
+            pagina as MutableState<Int>,
         )
 
 
@@ -241,9 +240,9 @@ fun Configuracion(navController: NavController) {
                 dataStore.saveCorreosNoticias(correosNoticias = subscribirseCorreosNoticias.value)
                 dataStore.saveTerminos(terminos = terminosCondiciones.value)
                 dataStore.savePrivacidad(privacidad = privacidad.value)
-                dataStore.saveAyudaPagina(ayudaPagina = ayuda.value)
-                dataStore.saveConfiguracionPagina(configuracionPagina = configuracion.value)
-                dataStore.saveSobreNosotrosPagina(sobreNosotrosPagina = sobreNosotros.value)
+                dataStore.savePagina(pagina = pagina.value)
+
+                // para enviarte al inicio
                 navController.navigate(Rutas.Principal.route)
 
             }
@@ -278,9 +277,7 @@ fun toastAleatorio(context: Context){
 @Composable
 fun radioGroupASC(
     context: Context,
-    ayuda: MutableState<Boolean>,
-    sobreNosotros: MutableState<Boolean>,
-    configuracion: MutableState<Boolean>
+    pagina: MutableState<Int>,
 ){
 
 
@@ -294,14 +291,8 @@ fun radioGroupASC(
                 horizontalArrangement = Arrangement.Center
             ) {
                 RadioButton(
-                    selected = ayuda.value,
-                    onClick = {
-                        desSeleccionar(
-                            ayuda ,
-                            sobreNosotros ,
-                            configuracion )
-                        ayuda.value = true
-                              },
+                    selected = if (pagina.value == 1) { true } else { false },
+                    onClick = { pagina.value = 1},
                     colors = RadioButtonColors(
                         selectedColor = MaterialTheme.colorScheme.primary,
                         disabledSelectedColor = MaterialTheme.colorScheme.secondary,
@@ -324,14 +315,8 @@ fun radioGroupASC(
                 horizontalArrangement = Arrangement.Center
             ) {
                 RadioButton(
-                    selected = sobreNosotros.value,
-                    onClick = {
-                        desSeleccionar(
-                            ayuda,
-                            sobreNosotros,
-                            configuracion)
-                        sobreNosotros.value = true
-                              },
+                    selected = if (pagina.value == 2) { true } else { false },
+                    onClick = { pagina.value = 2},
                     colors = RadioButtonColors(
                         selectedColor = MaterialTheme.colorScheme.primary,
                         disabledSelectedColor = MaterialTheme.colorScheme.secondary,
@@ -353,14 +338,8 @@ fun radioGroupASC(
                 horizontalArrangement = Arrangement.Center
             ) {
                 RadioButton(
-                    selected = configuracion.value,
-                    onClick = {
-                        desSeleccionar(
-                            ayuda,
-                            sobreNosotros,
-                            configuracion)
-                        configuracion.value = true
-                              },
+                    selected = if (pagina.value == 3) { true } else { false },
+                    onClick = { pagina.value = 3},
                     colors = RadioButtonColors(
                         selectedColor = MaterialTheme.colorScheme.primary,
                         disabledSelectedColor = MaterialTheme.colorScheme.secondary,
@@ -376,18 +355,6 @@ fun radioGroupASC(
         }
     }
 }
-
-fun desSeleccionar(
-    ayuda: MutableState<Boolean>,
-    sobreNosotros: MutableState<Boolean>,
-    configuracion: MutableState<Boolean>
-)
-{
-    ayuda.value = false
-    sobreNosotros.value = false
-    configuracion.value = false
-}
-
 
 /*
  * LA Preview

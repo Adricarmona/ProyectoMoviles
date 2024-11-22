@@ -6,6 +6,7 @@ import androidx.datastore.dataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -21,9 +22,7 @@ class ConfiguracionDataStore(private val context: Context) {
         val CORREOS_NOTICIAS = booleanPreferencesKey("correosNoticias")
         val TERMINOS = booleanPreferencesKey("terminos")
         val PRIVACIDAD = booleanPreferencesKey("privacidad")
-        val AYUDA_PAGINA = booleanPreferencesKey("ayudaPagina")
-        val SOBRE_NOSOTROS_PAGINAS = booleanPreferencesKey("sobreNosotrosPagina")
-        val CONFIGURACION_PAGINA = booleanPreferencesKey("configuracionPagina")
+        val PAGINA = intPreferencesKey("0")
     }
 
     val getIdioma: Flow<String> = context.dataStoree.data
@@ -81,36 +80,15 @@ class ConfiguracionDataStore(private val context: Context) {
         }
     }
 
-    val getAyudaPagina: Flow<Boolean> = context.dataStoree.data
+    val getPagina: Flow<Int> = context.dataStoree.data
         .map { preferences ->
-            preferences[AYUDA_PAGINA] ?: false
+            preferences[PAGINA] ?: 1
         }
 
-    suspend fun saveAyudaPagina(ayudaPagina: Boolean) {
+    suspend fun savePagina(pagina: Int) {
         context.dataStoree.edit { preferences ->
-            preferences[AYUDA_PAGINA] = ayudaPagina
+            preferences[PAGINA] = pagina
         }
     }
 
-    val getSobreNosotrosPagina: Flow<Boolean> = context.dataStoree.data
-        .map { preferences ->
-            preferences[SOBRE_NOSOTROS_PAGINAS] ?: false
-        }
-
-    suspend fun saveSobreNosotrosPagina(sobreNosotrosPagina: Boolean) {
-        context.dataStoree.edit { preferences ->
-            preferences[SOBRE_NOSOTROS_PAGINAS] = sobreNosotrosPagina
-        }
-    }
-
-    val getConfiguracionPagina: Flow<Boolean> = context.dataStoree.data
-        .map { preferences ->
-            preferences[CONFIGURACION_PAGINA] ?: false
-        }
-
-    suspend fun saveConfiguracionPagina(configuracionPagina: Boolean) {
-        context.dataStoree.edit { preferences ->
-            preferences[CONFIGURACION_PAGINA] = configuracionPagina
-        }
-    }
 }
