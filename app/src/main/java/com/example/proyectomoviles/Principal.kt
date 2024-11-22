@@ -7,6 +7,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -42,27 +45,26 @@ fun Principal(navController: NavController) {
             contentDescription = "icono ecoring",
         )
         Spacer(modifier = Modifier.height(80.dp))
-        Button(onClick = { navController.navigate(Rutas.Ayuda.route) },
-        shape = MaterialTheme.shapes.small) {
-            Text("🆘"+context.getString(R.string.ayuda))
-        }
+
+        cards(
+            "🆘"+context.getString(R.string.ayuda),
+            { navController.navigate(Rutas.Ayuda.route) }
+        )
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = { navController.navigate(Rutas.AcercaDe.route) },
-            shape = MaterialTheme.shapes.small) {
-            Text("👬"+context.getString(R.string.AcercaDe))
-        }
+        cards(
+            "👬"+context.getString(R.string.AcercaDe),
+            { navController.navigate(Rutas.AcercaDe.route) }
+        )
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = { navController.navigate(Rutas.Configuracion.route) },
-            shape = MaterialTheme.shapes.small) {
-            Text("🛠"+context.getString(R.string.configuracion))
-        }
+        cards(
+            "🛠"+context.getString(R.string.configuracion),
+            { navController.navigate(Rutas.Configuracion.route) }
+        )
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = {
-            openDialog.value = true
-        },
-            shape = MaterialTheme.shapes.small) {
-            Text("🚪"+context.getString(R.string.salir))
-        }
+        cards(
+            "🚪"+context.getString(R.string.salir),
+            { openDialog.value = true }
+        )
 
         if (openDialog.value) {
             alertDialogDoc(openDialog)
@@ -107,6 +109,33 @@ fun alertDialogDoc(openDialog: MutableState<Boolean>) {
                 }
             }
         )
+    }
+}
+
+@Composable
+fun cards(
+    texto: String,
+    onclick: () -> Unit
+){
+    Card(
+        onClick = onclick,
+        modifier = Modifier.size(width = 200.dp, height = 40.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+        ),
+        elevation = CardDefaults.cardElevation(8.dp)
+
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = texto,
+            )
+        }
     }
 }
 
