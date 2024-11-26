@@ -6,9 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -46,34 +44,34 @@ fun Principal(navController: NavController) {
         )
         Spacer(modifier = Modifier.height(80.dp))
 
-        cards(
+        Cards(
             "🆘"+context.getString(R.string.ayuda),
             { navController.navigate(Rutas.Ayuda.route) }
         )
         Spacer(modifier = Modifier.height(8.dp))
-        cards(
+        Cards(
             "👬"+context.getString(R.string.AcercaDe),
             { navController.navigate(Rutas.AcercaDe.route) }
         )
         Spacer(modifier = Modifier.height(8.dp))
-        cards(
+        Cards(
             "🛠"+context.getString(R.string.configuracion),
             { navController.navigate(Rutas.Configuracion.route) }
         )
         Spacer(modifier = Modifier.height(8.dp))
-        cards(
+        Cards(
             "🚪"+context.getString(R.string.salir),
             { openDialog.value = true }
         )
 
         if (openDialog.value) {
-            alertDialogDoc(openDialog)
+            AlertDialogDoc(openDialog)
         }
     }
 }
 
 @Composable
-fun alertDialogDoc(openDialog: MutableState<Boolean>) {
+fun AlertDialogDoc(openDialog: MutableState<Boolean>) {
     val context = LocalContext.current
     val activity = context as? Activity
     if (openDialog.value) {
@@ -113,7 +111,7 @@ fun alertDialogDoc(openDialog: MutableState<Boolean>) {
 }
 
 @Composable
-fun cards(
+fun Cards(
     texto: String,
     onclick: () -> Unit
 ){
