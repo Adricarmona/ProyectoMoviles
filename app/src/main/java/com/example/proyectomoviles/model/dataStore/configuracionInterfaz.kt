@@ -1,4 +1,4 @@
-package com.example.proyectomoviles.dataStore
+package com.example.proyectomoviles.model.dataStore
 
 data class configuracionInterfaz(
     val idioma: String,
