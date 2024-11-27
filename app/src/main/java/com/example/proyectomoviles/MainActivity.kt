@@ -11,7 +11,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.proyectomoviles.model.Rutas
 import com.example.proyectomoviles.ui.viewmodels.AcercaDe
 import com.example.proyectomoviles.ui.viewmodels.Ayuda
-import com.example.proyectomoviles.ui.viewmodels.Configuracion
 import com.example.proyectomoviles.ui.viewmodels.Principal
 
 class MainActivity : ComponentActivity() {
