@@ -39,7 +39,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.proyectomoviles.dataStore.ConfiguracionDataStore
+import com.example.proyectomoviles.model.dataStore.ConfiguracionDataStore
 import com.example.proyectomoviles.model.Rutas
 import com.example.proyectomoviles.ui.theme.EsteticaTitulo
 import com.example.proyectomoviles.ui.theme.TipografiaTitulo

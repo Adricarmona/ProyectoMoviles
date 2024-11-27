@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.proyectomoviles.model.Rutas
+import com.example.proyectomoviles.ui.dialogs.AlertDialogDoc
 
 @Composable
 fun Principal(navController: NavController) {
@@ -67,46 +68,6 @@ fun Principal(navController: NavController) {
         if (openDialog.value) {
             AlertDialogDoc(openDialog)
         }
-    }
-}
-
-@Composable
-fun AlertDialogDoc(openDialog: MutableState<Boolean>) {
-    val context = LocalContext.current
-    val activity = context as? Activity
-    if (openDialog.value) {
-        AlertDialog(
-            onDismissRequest = {
-                openDialog.value = false
-            },
-            title = {
-                Text(text = context.getString(R.string.salirAplicacion))
-            },
-            text = {
-                Text(
-                    context.getString(R.string.SeguroDeSalir)
-                )
-            },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        openDialog.value = false
-                        activity?.finishAffinity()
-                    }
-                ) {
-                    Text(context.getString(R.string.aceptar))
-                }
-            },
-            dismissButton = {
-                TextButton(
-                    onClick = {
-                        openDialog.value = false
-                    }
-                ) {
-                    Text(context.getString(R.string.cancelar))
-                }
-            }
-        )
     }
 }
 
