@@ -1,4 +1,4 @@
-package com.example.proyectomoviles
+package com.example.proyectomoviles.ui.viewmodels
 
 import android.app.Activity
 import android.content.res.Configuration
@@ -23,6 +23,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.proyectomoviles.ProyectoMovilesTheme
+import com.example.proyectomoviles.R
 import com.example.proyectomoviles.model.Rutas
 import com.example.proyectomoviles.ui.dialogs.AlertDialogDoc
 
