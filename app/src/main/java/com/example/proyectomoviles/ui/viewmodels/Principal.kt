@@ -1,13 +1,13 @@
 package com.example.proyectomoviles.ui.viewmodels
 
 import android.app.Activity
-import android.app.Dialog
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -26,10 +26,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.proyectomoviles.ProyectoMovilesTheme
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.model.Rutas
-import com.example.proyectomoviles.ui.theme.EsteticaTitulo
-import com.example.proyectomoviles.ui.theme.TipografiaTitulo
-import com.example.proyectomoviles.ui.theme.Typography
-import kotlin.contracts.contract
+import com.example.proyectomoviles.ui.dialogs.AlertDialogDoc
 
 @Composable
 fun Principal(navController: NavController) {
@@ -49,71 +46,57 @@ fun Principal(navController: NavController) {
             contentDescription = "icono ecoring",
         )
         Spacer(modifier = Modifier.height(80.dp))
-        Button(onClick = { navController.navigate(Rutas.Ayuda.route) },
-        shape = MaterialTheme.shapes.small) {
-            Text("🆘"+context.getString(R.string.ayuda))
-        }
+
+        Cards(
+            "🆘"+context.getString(R.string.ayuda),
+            { navController.navigate(Rutas.Ayuda.route) }
+        )
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = { navController.navigate(Rutas.AcercaDe.route) },
-            shape = MaterialTheme.shapes.small) {
-            Text("👬"+context.getString(R.string.AcercaDe))
-        }
+        Cards(
+            "👬"+context.getString(R.string.AcercaDe),
+            { navController.navigate(Rutas.AcercaDe.route) }
+        )
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = { navController.navigate(Rutas.Configuracion.route) },
-            shape = MaterialTheme.shapes.small) {
-            Text("🛠"+context.getString(R.string.configuracion))
-        }
+        Cards(
+            "🛠"+context.getString(R.string.configuracion),
+            { navController.navigate(Rutas.Configuracion.route) }
+        )
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = {
-            openDialog.value = true
-        },
-            shape = MaterialTheme.shapes.small) {
-            Text("🚪"+context.getString(R.string.salir))
-        }
+        Cards(
+            "🚪"+context.getString(R.string.salir),
+            { openDialog.value = true }
+        )
 
         if (openDialog.value) {
-            alertDialogDoc(openDialog)
+            AlertDialogDoc(openDialog)
         }
     }
 }
 
 @Composable
-fun alertDialogDoc(openDialog: MutableState<Boolean>) {
-    val context = LocalContext.current
-    val activity = context as? Activity
-    if (openDialog.value) {
-        AlertDialog(
-            onDismissRequest = {
-                openDialog.value = false
-            },
-            title = {
-                Text(text = context.getString(R.string.salirAplicacion))
-            },
-            text = {
-                Text(
-                    context.getString(R.string.SeguroDeSalir)
-                )
-            },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        openDialog.value = false
-                        activity?.finishAffinity()
-                    }
-                ) {
-                    Text(context.getString(R.string.aceptar))
-                }
-            },
-            dismissButton = {
-                TextButton(
-                    onClick = {
-                        openDialog.value = false
-                    }
-                ) {
-                    Text(context.getString(R.string.salir))
-                }
-            }
-        )
+fun Cards(
+    texto: String,
+    onclick: () -> Unit
+){
+    Card(
+        onClick = onclick,
+        modifier = Modifier.size(width = 200.dp, height = 40.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+        ),
+        elevation = CardDefaults.cardElevation(8.dp)
+
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = texto,
+            )
+        }
     }
 }
 

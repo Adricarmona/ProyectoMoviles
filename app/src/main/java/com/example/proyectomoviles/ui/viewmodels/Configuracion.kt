@@ -1,6 +1,7 @@
-package com.example.proyectomoviles.ui.viewmodels
+package com.example.proyectomoviles
 
 import android.content.Context
+import android.content.res.Configuration
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -21,6 +22,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonColors
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -31,15 +34,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-<<<<<<< Updated upstream:app/src/main/java/com/example/proyectomoviles/Configuracion.kt
-import com.example.proyectomoviles.dataStore.ConfiguracionDataStore
-=======
-import com.example.proyectomoviles.ProyectoMovilesTheme
-import com.example.proyectomoviles.R
 import com.example.proyectomoviles.model.dataStore.ConfiguracionDataStore
->>>>>>> Stashed changes:app/src/main/java/com/example/proyectomoviles/ui/viewmodels/Configuracion.kt
 import com.example.proyectomoviles.model.Rutas
 import com.example.proyectomoviles.ui.theme.EsteticaTitulo
 import com.example.proyectomoviles.ui.theme.TipografiaTitulo
@@ -69,6 +67,7 @@ fun Configuracion(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .background(color = MaterialTheme.colorScheme.background),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
