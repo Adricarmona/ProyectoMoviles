@@ -103,4 +103,12 @@ dependencies {
     // AsyncImage
     implementation("io.coil-kt.coil3:coil-compose:3.0.2")
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.2")
+
+    // Corrutinas
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // adaptador de retrofit o algo asi
+    implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
+
 }
