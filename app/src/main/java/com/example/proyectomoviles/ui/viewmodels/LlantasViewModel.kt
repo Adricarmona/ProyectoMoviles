@@ -1,10 +1,10 @@
-package com.example.proyectomoviles.model.llantas
+package com.example.proyectomoviles.ui.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.proyectomoviles.model.llantas.Llantas
 import kotlinx.coroutines.launch
 import com.example.proyectomoviles.model.llantas.LlantasRepository
 

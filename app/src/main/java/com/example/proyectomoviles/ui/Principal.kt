@@ -1,4 +1,4 @@
-package com.example.proyectomoviles.ui.viewmodels
+package com.example.proyectomoviles.ui
 
 import android.content.res.Configuration
 import androidx.compose.foundation.Image

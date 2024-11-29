@@ -1,4 +1,4 @@
-package com.example.proyectomoviles.ui.viewmodels
+package com.example.proyectomoviles.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

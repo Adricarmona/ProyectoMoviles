@@ -10,11 +10,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.proyectomoviles.model.Rutas
-import com.example.proyectomoviles.model.llantas.LlantasViewModel
-import com.example.proyectomoviles.ui.viewmodels.AcercaDe
-import com.example.proyectomoviles.ui.viewmodels.Ayuda
-import com.example.proyectomoviles.ui.viewmodels.LlantasScreen
-import com.example.proyectomoviles.ui.viewmodels.Principal
+import com.example.proyectomoviles.ui.viewmodels.LlantasViewModel
+import com.example.proyectomoviles.ui.AcercaDe
+import com.example.proyectomoviles.ui.Ayuda
+import com.example.proyectomoviles.ui.LlantasScreen
+import com.example.proyectomoviles.ui.Principal
 
 class MainActivity : ComponentActivity() {
     private val viewModel: LlantasViewModel by viewModels()
