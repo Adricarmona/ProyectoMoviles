@@ -1,5 +1,6 @@
 package com.example.proyectomoviles.ui.usables
 
+import android.R.id.bold
 import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -16,8 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import coil3.Image
 import coil3.compose.AsyncImage
@@ -39,7 +44,11 @@ fun CardDatosLLantas (
     price: Int,
     image_url: String
 ){
-    Card {
+    val context = LocalContext.current
+
+    Card(
+        modifier = Modifier.padding(10.dp)
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -51,8 +60,8 @@ fun CardDatosLLantas (
                     .data(image_url.replace("http://", "https://"))
                     .crossfade(true)
                     .build(),
-                placeholder = painterResource(R.drawable.png_clipart_rim_et_keskin_tuning_europe_gmbh_car_tuning_alloy_wheel_kt_miscellaneous_auto_part),
-                //error = painterResource(R.drawable.bokeron_javi),
+                placeholder = painterResource(R.drawable.rueda_cargando_sin_fondo),
+                error = painterResource(R.drawable.rueda_error_sin_fondo),
                 contentDescription = brand,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
@@ -60,14 +69,26 @@ fun CardDatosLLantas (
             )
             Column(
                 modifier = Modifier
-                    .padding(40.dp, 0.dp)
+                    .padding(20.dp, 0.dp)
             ) {
-                Text(brand)
-                Text(model)
-                Text(size)
-                Text(material)
-                Text(color)
-                Text(""+price+"€")
+                Text(
+                    text = brand+" - "+model,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 25.sp
+                    )
+
+                Text(
+                    text = context.getString(R.string.tamanio)+" "+size,
+                    fontSize = 13.sp
+                )
+                Text(
+                    text = context.getString(R.string.tipo)+" "+material,
+                    fontSize = 13.sp
+                )
+                Text(
+                    text = context.getString(R.string.precio)+" "+price/100+"€",
+                    fontSize = 13.sp
+                )
             }
         }
     }
@@ -79,8 +100,8 @@ fun CardDatosLLantas (
 fun previewCardDatos() {
     ProyectoMovilesTheme{
         CardDatosLLantas(
-            brand = "TODO",
-            model = "TODO",
+            brand = "TODOT",
+            model = "TODOT",
             size = "TODO",
             material = "TODO",
             color = "TODO",

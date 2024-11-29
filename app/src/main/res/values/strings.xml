@@ -39,4 +39,9 @@
     <string name="ayuda">Help</string>
     <string name="salir">Close App</string>
     <string name="llantas">RimAPI</string>
+    <string name="Nuestro_Catalogo">Our Catalog</string>
+    <string name="Loading...">Loading...</string>
+    <string name="tamanio">Size:</string>
+    <string name="tipo">Type:</string>
+    <string name="precio">Price:</string>
 </resources>

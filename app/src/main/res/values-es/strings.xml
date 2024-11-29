@@ -38,4 +38,9 @@
     <string name="ayuda">Ayuda</string>
     <string name="salir">Salir</string>
     <string name="llantas">LlantasAPI</string>
+    <string name="Nuestro_Catalogo">Nuestro Catalogo</string>
+    <string name="Loading...">Cargando...</string>
+    <string name="tamanio">Tamaño:</string>
+    <string name="tipo">Tipo:</string>
+    <string name="precio">Precio:</string>
 </resources>
