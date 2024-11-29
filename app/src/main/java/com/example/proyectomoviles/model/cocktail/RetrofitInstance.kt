@@ -1,12 +1,22 @@
 package com.example.proyectomoviles.model.cocktail
 
-data class CocktailsData(
-    val id: String, // el id
-    val strDrink: String, // el nombre
-    val strInstructions: String, // las intrucciones en ingles
-    val strInstructionsEs: String, // las instrucciones en español
-    val strDrinkThumb: String, // la foto
-)
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
+object RetrofitInstance {
+    private const val BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
+
+    private val retrofit: Retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    val clienteCocktails: ClienteCocktails by lazy {
+        retrofit.create(ClienteCocktails::class.java)
+    }
+}
 
 
 // la api https://www.thecocktaildb.com/api.php
