@@ -15,8 +15,8 @@ class LlantasViewModel : ViewModel() {
     fun fetchLlantas() {
         viewModelScope.launch {
             try {
-                val cards = repository.getLlantas()
-                _llantas.value = cards
+                val llanta = repository.getLlantas()
+                _llantas.value = llanta
             } catch (e: Exception) {
                 // Handle error
             }
