@@ -15,6 +15,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,19 +54,24 @@ fun CardDatosLLantas (
                 placeholder = painterResource(R.drawable.rueda_cargando_sin_fondo),
                 error = painterResource(R.drawable.rueda_error_sin_fondo),
                 contentDescription = brand,
-                contentScale = ContentScale.Fit,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .height(100.dp)
+                    .weight(0.3f)
             )
             Column(
                 modifier = Modifier
                     .padding(20.dp, 0.dp)
+                    .weight(0.7f)
             ) {
                 Text(
-                    text = brand+" - "+model,
+                    text = "$brand - $model",
                     fontWeight = FontWeight.Bold,
-                    fontSize = 25.sp
-                    )
+                    fontSize = 25.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+
 
                 Text(
                     text = context.getString(R.string.tamanio)+" "+size,

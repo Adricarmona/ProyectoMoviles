@@ -116,4 +116,6 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
     implementation ("androidx.compose.runtime:runtime-livedata:1.0.4")
 
+    //firebase
+    implementation(libs.firebase.auth)
 }
