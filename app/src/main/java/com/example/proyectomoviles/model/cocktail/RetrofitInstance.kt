@@ -13,8 +13,8 @@ object RetrofitInstance {
             .build()
     }
 
-    val clienteCocktailsService: ClienteCocktailsService by lazy {
-        retrofit.create(ClienteCocktailsService::class.java)
+    val llantasService: LlantasService by lazy {
+        retrofit.create(LlantasService::class.java)
     }
 }
 

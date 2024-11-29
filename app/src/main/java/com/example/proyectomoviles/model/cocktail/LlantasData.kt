@@ -1,6 +1,6 @@
 package com.example.proyectomoviles.model.cocktail
 
-data class CocktailsData(
+data class LlantasData(
     val id: String, // el id
     val strDrink: String, // el nombre
     val strInstructions: String, // las intrucciones en ingles
