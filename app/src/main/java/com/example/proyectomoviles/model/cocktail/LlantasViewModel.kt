@@ -12,7 +12,7 @@ class LlantasViewModel : ViewModel() {
     private val _llantas = MutableLiveData<List<LlantasData>>()
     val llantas: LiveData<List<LlantasData>> = _llantas
 
-    fun fetchCocktails() {
+    fun fetchLlantas() {
         viewModelScope.launch {
             try {
                 val cards = repository.getLlantas()
