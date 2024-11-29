@@ -2,12 +2,14 @@ package com.example.proyectomoviles.ui.viewmodels
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Divider
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import com.example.proyectomoviles.model.cocktail.LlantasViewModel
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import com.example.proyectomoviles.model.llantas.LlantasViewModel
 
 @Composable
 fun LlantasScreen(viewModel: LlantasViewModel) {
@@ -24,11 +26,12 @@ fun LlantasScreen(viewModel: LlantasViewModel) {
         } else {
             // Display the list of credit cards
             LazyColumn{
-                items(llantas) { creditCard ->
-                    Text(text = llantas)
-                    Text(text = creditCard.number)
-                    Text(text = creditCard.type)
-                    HorizontalDivider() // Add a divider between items
+                items(llantas) { llanta ->
+                    Text(text = llanta.brand)
+                    Text(text = llanta.model)
+                    Text(text = llanta.size)
+                    HorizontalDivider()
+
                 }
             }
         }

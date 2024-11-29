@@ -9,8 +9,8 @@ import kotlinx.coroutines.launch
 class LlantasViewModel : ViewModel() {
     private val repository = LlantasRepository()
 
-    private val _llantas = MutableLiveData<List<LlantasData>>()
-    val llantas: LiveData<List<LlantasData>> = _llantas
+    private val _llantas = MutableLiveData<List<Llantas>>()
+    val llantas: LiveData<List<Llantas>> = _llantas
 
     fun fetchLlantas() {
         viewModelScope.launch {

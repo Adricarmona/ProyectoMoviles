@@ -1,6 +1,6 @@
 package com.example.proyectomoviles.model.llantas
 
-data class LlantasData(
+data class Llantas(
     val brand: String, // la marca
     val model: String, // el modelo
     val size: String, // el tamaño (en Large, Medium, Small)

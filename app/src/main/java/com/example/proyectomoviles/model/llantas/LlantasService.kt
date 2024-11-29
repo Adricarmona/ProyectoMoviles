@@ -4,7 +4,7 @@ import retrofit2.http.GET
 
 interface LlantasService {
     @GET("/f9c49d59-3f0a-4fdf-b7fc-3d745be56d99")
-    suspend fun getLlantas(): List<LlantasData>
+    suspend fun getLlantas(): List<Llantas>
 }
 
 /*

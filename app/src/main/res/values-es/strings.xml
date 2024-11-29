@@ -37,4 +37,5 @@
     <string name="configuracion">Configuracion</string>
     <string name="ayuda">Ayuda</string>
     <string name="salir">Salir</string>
+    <string name="llantas">LlantasAPI</string>
 </resources>

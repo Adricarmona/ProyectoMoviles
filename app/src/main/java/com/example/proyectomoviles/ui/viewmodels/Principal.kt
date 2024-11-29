@@ -63,6 +63,11 @@ fun Principal(navController: NavController) {
         )
         Spacer(modifier = Modifier.height(8.dp))
         Cards(
+            "🦽"+context.getString(R.string.llantas),
+            { navController.navigate(Rutas.LlantasAPI.route) }
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        Cards(
             "🚪"+context.getString(R.string.salir),
             { openDialog.value = true }
         )

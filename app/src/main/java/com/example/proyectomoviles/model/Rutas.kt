@@ -5,4 +5,5 @@ sealed class Rutas(val route: String) {
     object Ayuda : Rutas("ayuda")
     object AcercaDe : Rutas("acerca_de")
     object Configuracion : Rutas("configuracion")
+    object LlantasAPI : Rutas("llantasApi")
 }
