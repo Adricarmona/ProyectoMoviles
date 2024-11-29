@@ -1,0 +1,94 @@
+{
+  "rims": [
+    {
+      "brand": "BBS",
+      "model": "CH-R",
+      "size": "Medium",
+      "material": "Aluminum Alloy",
+      "color": "Matte Black",
+      "price": 35099,
+      "image_url": "https://example.com/images/bbs-chr.jpg"
+    },
+    {
+      "brand": "Enkei",
+      "model": "RPF1",
+      "size": "Small",
+      "material": "Aluminum",
+      "color": "Silver",
+      "price": 25050,
+      "image_url": "https://example.com/images/enkei-rpf1.jpg"
+    },
+    {
+      "brand": "OZ Racing",
+      "model": "Ultraleggera",
+      "size": "Large",
+      "material": "Forged Aluminum",
+      "color": "Gloss Black",
+      "price": 45075,
+      "image_url": "https://example.com/images/oz-ultraleggera.jpg"
+    },
+    {
+      "brand": "Rotiform",
+      "model": "BLQ",
+      "size": "Large",
+      "material": "Cast Aluminum",
+      "color": "Bronze",
+      "price": 40000,
+      "image_url": "https://example.com/images/rotiform-blq.jpg"
+    },
+    {
+      "brand": "HRE",
+      "model": "FF01",
+      "size": "Large",
+      "material": "FlowForm Aluminum",
+      "color": "Satin Silver",
+      "price": 55000,
+      "image_url": "https://example.com/images/hre-ff01.jpg"
+    },
+    {
+      "brand": "Vossen",
+      "model": "HF-3",
+      "size": "Medium",
+      "material": "Hybrid Forged Aluminum",
+      "color": "Gloss Graphite",
+      "price": 48099,
+      "image_url": "https://example.com/images/vossen-hf3.jpg"
+    },
+    {
+      "brand": "Advanti Racing",
+      "model": "Storm S1",
+      "size": "Small",
+      "material": "Cast Aluminum",
+      "color": "Matte Bronze",
+      "price": 23000,
+      "image_url": "https://example.com/images/advanti-storm-s1.jpg"
+    },
+    {
+      "brand": "Konig",
+      "model": "Hypergram",
+      "size": "Medium",
+      "material": "FlowForm Aluminum",
+      "color": "Metallic Red",
+      "price": 30050,
+      "image_url": "https://example.com/images/konig-hypergram.jpg"
+    },
+    {
+      "brand": "Fuel",
+      "model": "D579 Vapor",
+      "size": "Large",
+      "material": "Aluminum Alloy",
+      "color": "Gloss Black Milled",
+      "price": 52099,
+      "image_url": "https://example.com/images/fuel-d579-vapor.jpg"
+    },
+    {
+      "brand": "American Racing",
+      "model": "Torq Thrust",
+      "size": "Small",
+      "material": "Cast Aluminum",
+      "color": "Chrome",
+      "price": 27075,
+      "image_url": "https://example.com/images/american-racing-torq-thrust.jpg"
+    }
+  ]
+}
