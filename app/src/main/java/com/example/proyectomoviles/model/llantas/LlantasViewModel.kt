@@ -1,4 +1,4 @@
-package com.example.proyectomoviles.model.cocktail
+package com.example.proyectomoviles.model.llantas
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

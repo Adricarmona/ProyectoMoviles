@@ -1,4 +1,4 @@
-package com.example.proyectomoviles.model.cocktail
+package com.example.proyectomoviles.model.llantas
 
 class LlantasRepository {
     private val llantasService = RetrofitInstance.llantasService
