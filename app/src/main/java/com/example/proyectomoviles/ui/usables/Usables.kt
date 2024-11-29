@@ -1,4 +1,4 @@
-package com.example.proyectomoviles.ui.theme
+package com.example.proyectomoviles.ui.usables
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

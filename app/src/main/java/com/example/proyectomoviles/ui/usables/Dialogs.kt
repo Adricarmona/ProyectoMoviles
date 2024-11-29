@@ -1,4 +1,4 @@
-package com.example.proyectomoviles.ui.dialogs
+package com.example.proyectomoviles.ui.usables
 
 import android.app.Activity
 import androidx.compose.material3.AlertDialog

@@ -18,9 +18,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.proyectomoviles.R
-import com.example.proyectomoviles.ui.theme.EsteticaMiniTitulo
-import com.example.proyectomoviles.ui.theme.EsteticaTitulo
-import com.example.proyectomoviles.ui.theme.TextoNormal
+import com.example.proyectomoviles.ui.usables.EsteticaMiniTitulo
+import com.example.proyectomoviles.ui.usables.EsteticaTitulo
+import com.example.proyectomoviles.ui.usables.TextoNormal
 import com.example.proyectomoviles.ui.theme.TipografiaMiniTitulo
 import com.example.proyectomoviles.ui.theme.TipografiaTitulo
 

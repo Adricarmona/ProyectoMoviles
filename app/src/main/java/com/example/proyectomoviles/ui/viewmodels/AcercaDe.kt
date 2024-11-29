@@ -16,8 +16,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
 import com.example.proyectomoviles.R
-import com.example.proyectomoviles.ui.theme.EsteticaTitulo
-import com.example.proyectomoviles.ui.theme.TextoNormal
+import com.example.proyectomoviles.ui.usables.EsteticaTitulo
+import com.example.proyectomoviles.ui.usables.TextoNormal
 import com.example.proyectomoviles.ui.theme.TipografiaTitulo
 
 @Composable
