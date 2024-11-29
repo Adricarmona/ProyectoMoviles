@@ -20,7 +20,7 @@ object RetrofitInstance {
 
 /*
 
-https://run.mocky.io/v3/f9c49d59-3f0a-4fdf-b7fc-3d745be56d99
+https://run.mocky.io/v3/8986f8f2-398e-45e5-8f8b-b39bd0081d3d
 
 {
   "rims": [
