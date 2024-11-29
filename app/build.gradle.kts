@@ -111,4 +111,9 @@ dependencies {
     // adaptador de retrofit o algo asi
     implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
 
+    // Jetpack Compose
+    implementation ("androidx.activity:activity-compose:1.4.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
+    implementation ("androidx.compose.runtime:runtime-livedata:1.0.4")
+
 }

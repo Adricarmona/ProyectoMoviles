@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
-    private const val BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
+    private const val BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1"
 
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
@@ -13,8 +13,8 @@ object RetrofitInstance {
             .build()
     }
 
-    val clienteCocktails: ClienteCocktails by lazy {
-        retrofit.create(ClienteCocktails::class.java)
+    val clienteCocktailsService: ClienteCocktailsService by lazy {
+        retrofit.create(ClienteCocktailsService::class.java)
     }
 }
 
