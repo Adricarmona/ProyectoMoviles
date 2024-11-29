@@ -1,5 +1,6 @@
 package com.example.proyectomoviles.ui.viewmodels
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -9,11 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.navigation.NavController
 import com.example.proyectomoviles.model.llantas.LlantasViewModel
+import kotlin.math.log
 
 @Composable
-fun LlantasScreen(viewModel: LlantasViewModel) {
+fun LlantasScreen(viewModel: LlantasViewModel, navController: NavController) {
     val llantas by viewModel.llantas.observeAsState(emptyList())
+    Log.i("palplalaplapal", llantas.toString())
 
     LaunchedEffect(Unit) {
         viewModel.fetchLlantas()

@@ -3,13 +3,13 @@ package com.example.proyectomoviles.model.llantas
 import retrofit2.http.GET
 
 interface LlantasService {
-    @GET("/f9c49d59-3f0a-4fdf-b7fc-3d745be56d99")
+    @GET("839f1c1b-753b-4e9e-83f7-4f3ee1c58e0c")
     suspend fun getLlantas(): List<Llantas>
 }
 
 /*
 
-https://run.mocky.io/v3/f9c49d59-3f0a-4fdf-b7fc-3d745be56d99
+https://run.mocky.io/v3/839f1c1b-753b-4e9e-83f7-4f3ee1c58e0c
 
 {
   "rims": [
