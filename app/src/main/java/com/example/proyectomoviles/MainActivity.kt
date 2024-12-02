@@ -15,6 +15,7 @@ import com.example.proyectomoviles.ui.AcercaDe
 import com.example.proyectomoviles.ui.Ayuda
 import com.example.proyectomoviles.ui.LlantasScreen
 import com.example.proyectomoviles.ui.Principal
+import com.example.proyectomoviles.ui.auth.inicioSesion
 
 class MainActivity : ComponentActivity() {
     private val viewModel: LlantasViewModel by viewModels()
@@ -41,6 +42,7 @@ class MainActivity : ComponentActivity() {
             composable(Rutas.AcercaDe.route) { AcercaDe(navController) }
             composable(Rutas.Configuracion.route) { Configuracion(navController) }
             composable(Rutas.LlantasAPI.route) { LlantasScreen(llantasViewModel, navController) }
+            composable(Rutas.Login.route) { inicioSesion() }
         }
     }
 }

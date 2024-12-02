@@ -6,4 +6,5 @@ sealed class Rutas(val route: String) {
     object AcercaDe : Rutas("acerca_de")
     object Configuracion : Rutas("configuracion")
     object LlantasAPI : Rutas("llantasApi")
+    object Login : Rutas("inicioSession")
 }
