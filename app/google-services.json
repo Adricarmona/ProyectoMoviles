@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "44468985786",
+    "project_id": "ecoring-cf0b4",
+    "storage_bucket": "ecoring-cf0b4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44468985786:android:70e88013c5c274b4ff4783",
+        "android_client_info": {
+          "package_name": "com.example.proyectomoviles"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIQFI8RrzkBIJSfwBQtcuisBRAS9Kn6wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
