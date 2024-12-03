@@ -34,14 +34,16 @@ import com.example.proyectomoviles.model.Rutas
 import com.example.proyectomoviles.ui.usables.AlertDialogDoc
 import com.example.proyectomoviles.ui.viewmodels.AuthState
 import com.example.proyectomoviles.ui.viewmodels.AuthViewModel
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 @Composable
 fun Principal(navController: NavController, authViewModel: AuthViewModel) {
     val context = LocalContext.current
     val openDialog = remember { mutableStateOf(false) }
     val authState = authViewModel.authState.observeAsState()
-
-
+    val user = Firebase.auth.currentUser
+    val email = user?.email
 
     Column(
         modifier = Modifier
@@ -57,9 +59,10 @@ fun Principal(navController: NavController, authViewModel: AuthViewModel) {
                 )
                 {
                     Text(
-                        "Cerrar Sesión"
+                        text = context.getString(R.string.cerrarsesion) + "  " + email
                     )
                 }
+
             }
             else -> {
                 TextButton(
@@ -68,7 +71,7 @@ fun Principal(navController: NavController, authViewModel: AuthViewModel) {
                     shape = MaterialTheme.shapes.extraSmall)
                 {
                     Text(
-                        "Login"
+                        text = context.getString(R.string.iniciarsesion)
                     )
                     Icon(
                         Icons.Rounded.AccountBox,

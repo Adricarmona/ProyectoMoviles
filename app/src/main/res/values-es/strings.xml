@@ -43,4 +43,11 @@
     <string name="tamanio">Tamaño:</string>
     <string name="tipo">Tipo:</string>
     <string name="precio">Precio:</string>
+    <string name="cerrarsesion">Cerrar sesión</string>
+    <string name="iniciarsesion">Iniciar sesión</string>
+    <string name="registrarse">Registro</string>
+    <string name="usuario">Nombre de Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="notienescuenta">Si no tienes cuenta, crea una aquí</string>
+    <string name="tienescuenta">Si ya tienes cuenta, inicia sesión aquí</string>
 </resources>
