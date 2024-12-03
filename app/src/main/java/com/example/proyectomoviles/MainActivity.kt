@@ -4,56 +4,49 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.proyectomoviles.ui.theme.ProyectoMovilesTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.proyectomoviles.model.Rutas
+import com.example.proyectomoviles.ui.viewmodels.LlantasViewModel
+import com.example.proyectomoviles.ui.AcercaDe
+import com.example.proyectomoviles.ui.Ayuda
+import com.example.proyectomoviles.ui.LlantasScreen
+import com.example.proyectomoviles.ui.Principal
+import com.example.proyectomoviles.ui.auth.inicioSesion
+import com.example.proyectomoviles.ui.auth.registrarseSesion
+import com.example.proyectomoviles.ui.viewmodels.AuthViewModel
 
 class MainActivity : ComponentActivity() {
+    private val viewModel: LlantasViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             ProyectoMovilesTheme {
-                botonPantalla()
+                AppNavigation()
             }
         }
     }
-
     @Composable
-    fun botonPantalla(){
-        var acercaDeVisible by remember { mutableStateOf(false) }
+    fun AppNavigation() {
+        val navController = rememberNavController()
+        val llantasViewModel: LlantasViewModel by viewModels()
+        val authViewModel: AuthViewModel by viewModels()
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(color = MaterialTheme.colorScheme.background),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-
-            ) {
-            Button(onClick = { acercaDeVisible = true}) {
-                Text(text = "ver pantalla")
-            }
-        }
-
-
-        if (acercaDeVisible){
-            AcercaDe()
+        NavHost(
+            navController = navController,
+            startDestination = Rutas.Principal.route
+        ) {
+            composable(Rutas.Principal.route) { Principal(navController, authViewModel) }
+            composable(Rutas.Ayuda.route) { Ayuda(navController) }
+            composable(Rutas.AcercaDe.route) { AcercaDe(navController) }
+            composable(Rutas.Configuracion.route) { Configuracion(navController) }
+            composable(Rutas.LlantasAPI.route) { LlantasScreen(llantasViewModel, navController) }
+            composable(Rutas.Login.route) { inicioSesion(navController, authViewModel) }
+            composable(Rutas.Register.route) { registrarseSesion(navController, authViewModel) }
         }
     }
 }

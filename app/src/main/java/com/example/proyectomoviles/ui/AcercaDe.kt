@@ -1,6 +1,5 @@
-package com.example.proyectomoviles
+package com.example.proyectomoviles.ui
 
-import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -13,19 +12,16 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.em
-import androidx.compose.ui.unit.sp
-import com.example.proyectomoviles.ui.theme.ProyectoMovilesTheme
-import com.example.proyectomoviles.ui.theme.PurpleGrey40
+import androidx.navigation.NavController
+import com.example.proyectomoviles.R
+import com.example.proyectomoviles.ui.usables.EsteticaTitulo
+import com.example.proyectomoviles.ui.usables.TextoNormal
+import com.example.proyectomoviles.ui.theme.TipografiaTitulo
 
 @Composable
-fun AcercaDe() {
+fun AcercaDe(navController: NavController) {
     val context = LocalContext.current
 
     Column(
@@ -50,13 +46,16 @@ fun AcercaDe() {
             Parte de arriba debajo del icono con el titulo y el subtitulo gigantico
              */
             EsteticaTitulo(
-                context.getString(R.string.AcercaDe)
+                context.getString(R.string.AcercaDe),
+                TipografiaTitulo.bodyLarge
             )
             EsteticaTitulo(
-                "EcoRing"
+                "EcoRing",
+                TipografiaTitulo.bodyLarge
             )
             TextoNormal(
-                context.getString(R.string.TrabajoDeMoviles)
+                context.getString(R.string.TrabajoDeMoviles),
+                Modifier.width(250.dp)
             )
 
             /// ESPACIO ENTRE TITULO Y TEXTO
@@ -68,13 +67,16 @@ fun AcercaDe() {
 
             // el quienes aparecemos en la aplicacion
             TextoNormal(
-                context.getString(R.string.AplicacionCreada)
+                context.getString(R.string.AplicacionCreada),
+                Modifier.width(250.dp)
             )
             TextoNormal(
-                "- Adrian Carmona"
+                "- Adrian Carmona",
+                Modifier.width(250.dp)
             )
             TextoNormal(
-                "- Hector Dominguez"
+                "- Hector Dominguez",
+                Modifier.width(250.dp)
             )
 
             Spacer(
@@ -90,37 +92,11 @@ fun AcercaDe() {
     }
 }
 
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+/*@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, locale = "es")
 @Composable
 fun previewAcercaDe() {
     ProyectoMovilesTheme{
         AcercaDe()
     }
-}
-
-@Composable
-fun EsteticaTitulo(text: String)
-{
-    Text(
-        text = text,
-        color = MaterialTheme.colorScheme.primary,
-        textAlign = TextAlign.Center,
-        fontStyle = FontStyle.Italic,
-        fontWeight = FontWeight.Bold,
-        fontSize = 12.em,
-        lineHeight = 66.sp,
-        modifier = Modifier.width(250.dp)
-    )
-}
-
-@Composable
-fun TextoNormal(text: String)
-{
-    Text(
-        text = text,
-        color = MaterialTheme.colorScheme.secondary,
-        textAlign = TextAlign.Center,
-        modifier = Modifier.width(250.dp)
-    )
-}
+}*/

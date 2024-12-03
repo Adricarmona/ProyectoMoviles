@@ -1,6 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">EcoRing</string>
+    <string name="app_name" translatable="false">EcoRing</string>
     <string name="AcercaDe">About us</string>
     <string name="AplicacionCreada">Application created by:</string>
     <string name="TrabajoDeMoviles">Work on multimedia programming and mobile devices, application on types of vehicle tires</string>
+    <string name="Configuracion">Configuration</string>
+    <string name="IdiomaEstetico">─── Language ───</string>
+    <string name="Idioma_aplicacion">Application language</string>
+    <string name="Idioma_del_sistema">System language</string>
+    <string name="Ingles">English</string>
+    <string name="Español">Spanish</string>
+    <string name="OpcionesDeCorreoEstetico">─── Mail Options ───</string>
+    <string name="EnviarCorreosPromocionales">Send promotional emails</string>
+    <string name="EnviarCorreosDeNoticias">Send news emails</string>
+    <string name="TerminosCondicionesPrivacidadEstetico">─── Terms, Conditions and Privacy ───</string>
+    <string name="TerminosYCondiciones">Terms and conditions</string>
+    <string name="AceptarPrivacidad">Accept privacy</string>
+    <string name="PaginaDeInicioEstetica">─── Home Page ───</string>
+    <string name="Guardar">Save</string>
+    <string name="AceptadoCorrectamenteAmbos">Accepted both correctly</string>
+    <string name="DenegadoAmbosApartados">Both sections denied</string>
+    <string name="FuncionaElOnClick">onClick works</string>
+    <string name="Ayuda">Help</string>
+    <string name="Ayudatxt">Welcome to the Help section. Here you will find answers to frequently asked questions and guides to make your tire buying experience easier and faster.</string>
+    <string name="FAQtxt">Frequently Asked Questions (FAQ)</string>
+    <string name="BuscarLlantasTxt">How do I find tires for my vehicle?\nEnter the make, model and year of your vehicle in the search engine to obtain compatible tires. You can also search by specific measurements or tire type if you already have that data.</string>
+    <string name="RealizarCompraTxt">How do I make a purchase?\nOnce the tire is selected, add it to the cart and follow the on-screen steps to complete your purchase. You can pay by credit card, debit card or alternative payment methods.</string>
+    <string name="MetodosEnvioTxt">What shipping methods do you offer?\nWe offer home delivery and you can also choose to pick up your tires at a store near you. Shipping times and costs vary by location.</string>
+    <string name="DevolucionesTxt">Can I return or exchange my tires?\nReturns or exchanges are allowed within the first 30 days of purchase. Tires must be unused and in their original packaging. See our returns policy for more details.</string>
+    <string name="ContactoTxt">Contact\nIf you need more help or have a specific question, you can contact us:\nEmail: support@llantas.com\nTelephone: +34 123 456 789\nOpening hours: Monday to Friday from 9:00 a.m. to 6:00 p.m.</string>
+    <string name="ConsejosCompraTxt">Tips for your purchase\nCheck the specifications of your tires carefully before purchasing them to ensure compatibility with your vehicle.\nTake advantage of the special promotions and discounts that you will find in the Offers section.</string>
+    <string name="SobreNosotros">About us</string>
+    <string name="salirAplicacion">Exit Aplication</string>
+    <string name="SeguroDeSalir">Are you sure you want to exit EcoRing?</string>
+    <string name="aceptar">Accept</string>
+    <string name="cancelar">Cancel</string>
+    <string name="configuracion">Configuration</string>
+    <string name="ayuda">Help</string>
+    <string name="salir">Close App</string>
+    <string name="llantas">RimAPI</string>
+    <string name="Nuestro_Catalogo">Our Catalog</string>
+    <string name="Loading...">Loading...</string>
+    <string name="tamanio">Size:</string>
+    <string name="tipo">Type:</string>
+    <string name="precio">Price:</string>
+    <string name="cerrarsesion">Log out</string>
+    <string name="iniciarsesion">Login</string>
+    <string name="registrarse">Register</string>
+    <string name="usuario">Username</string>
+    <string name="password">Password</string>
+    <string name="notienescuenta">If you don\'t have an account, create one here</string>
+    <string name="tienescuenta">If you have an account, login here</string>
 </resources>
