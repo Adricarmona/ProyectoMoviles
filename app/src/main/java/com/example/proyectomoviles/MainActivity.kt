@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
             composable(Rutas.AcercaDe.route) { AcercaDe(navController) }
             composable(Rutas.Configuracion.route) { Configuracion(navController) }
             composable(Rutas.LlantasAPI.route) { LlantasScreen(llantasViewModel, navController) }
-            composable(Rutas.Login.route) { inicioSesion() }
+            composable(Rutas.Login.route) { inicioSesion(navController) }
         }
     }
 }

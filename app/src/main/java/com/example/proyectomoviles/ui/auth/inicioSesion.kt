@@ -5,8 +5,10 @@ import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
@@ -26,11 +28,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.proyectomoviles.ProyectoMovilesTheme
+import com.example.proyectomoviles.model.Rutas
 import com.example.proyectomoviles.ui.usables.CardDatosLLantas
 
 @Composable
-fun inicioSesion(){
+fun inicioSesion(navController: NavController){
     var usuario = remember { mutableStateOf("") }
     var clave = remember { mutableStateOf("") }
     var resultado = remember {mutableStateOf("Sin resultado")}
@@ -82,7 +86,13 @@ fun inicioSesion(){
             onClick = { Toast.makeText(context, "aaaa", Toast.LENGTH_SHORT).show(); }
         ){
                 Text("Loguearse")
-            }
+        }
+        Spacer(modifier = Modifier.height(40.dp))
+        Button(
+            onClick = { navController.navigate(Rutas.Register.route) }
+        ){
+            Text("Registrarse")
+        }
     }
 }
 
@@ -91,6 +101,6 @@ fun inicioSesion(){
 @Composable
 fun previewCardDatos() {
     ProyectoMovilesTheme{
-        inicioSesion()
+        inicioSesion(navController = NavController(context = LocalContext.current))
     }
 }
