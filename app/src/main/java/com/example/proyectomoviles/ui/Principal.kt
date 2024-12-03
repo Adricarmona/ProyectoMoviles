@@ -4,8 +4,13 @@ import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.AccountBox
+import androidx.compose.material.icons.rounded.List
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -29,50 +35,67 @@ fun Principal(navController: NavController) {
     val context = LocalContext.current
     val openDialog = remember { mutableStateOf(false) }
 
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(color = MaterialTheme.colorScheme.background),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-
     ) {
-        Image(
-            painter = painterResource(R.drawable.ecoring),
-            contentDescription = "icono ecoring",
-        )
-        Spacer(modifier = Modifier.height(80.dp))
+        Button(
+            onClick = { navController.navigate(Rutas.Login.route) },
+            modifier = Modifier.padding(10.dp, 5.dp, 0.dp, 0.dp),
+            shape = MaterialTheme.shapes.extraSmall)
+        {
+            Icon(
+                Icons.Rounded.AccountBox,
+                tint = MaterialTheme.colorScheme.primaryContainer,
+                contentDescription = "Icono lista de idiomas"
+            )
+        }
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
 
-        Cards(
-            "🆘"+context.getString(R.string.ayuda),
-            { navController.navigate(Rutas.Ayuda.route) }
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Cards(
-            "👬"+context.getString(R.string.AcercaDe),
-            { navController.navigate(Rutas.AcercaDe.route) }
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Cards(
-            "🛠"+context.getString(R.string.configuracion),
-            { navController.navigate(Rutas.Configuracion.route) }
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Cards(
-            "🦽"+context.getString(R.string.llantas),
-            { navController.navigate(Rutas.LlantasAPI.route) }
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Cards(
-            "🚪"+context.getString(R.string.salir),
-            { openDialog.value = true }
-        )
+            ) {
+            Image(
+                painter = painterResource(R.drawable.ecoring),
+                contentDescription = "icono ecoring",
+            )
+            Spacer(modifier = Modifier.height(80.dp))
 
-        if (openDialog.value) {
-            AlertDialogDoc(openDialog)
+            Cards(
+                "🆘"+context.getString(R.string.ayuda),
+                { navController.navigate(Rutas.Ayuda.route) }
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Cards(
+                "👬"+context.getString(R.string.AcercaDe),
+                { navController.navigate(Rutas.AcercaDe.route) }
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Cards(
+                "🛠"+context.getString(R.string.configuracion),
+                { navController.navigate(Rutas.Configuracion.route) }
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Cards(
+                "🦽"+context.getString(R.string.llantas),
+                { navController.navigate(Rutas.LlantasAPI.route) }
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Cards(
+                "🚪"+context.getString(R.string.salir),
+                { openDialog.value = true }
+            )
+
+            if (openDialog.value) {
+                AlertDialogDoc(openDialog)
+            }
         }
     }
 }
+
 
 @Composable
 fun Cards(
