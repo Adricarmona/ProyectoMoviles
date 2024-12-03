@@ -13,7 +13,10 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -29,11 +32,15 @@ import com.example.proyectomoviles.ProyectoMovilesTheme
 import com.example.proyectomoviles.R
 import com.example.proyectomoviles.model.Rutas
 import com.example.proyectomoviles.ui.usables.AlertDialogDoc
+import com.example.proyectomoviles.ui.viewmodels.AuthState
+import com.example.proyectomoviles.ui.viewmodels.AuthViewModel
 
 @Composable
-fun Principal(navController: NavController) {
+fun Principal(navController: NavController, authViewModel: AuthViewModel) {
     val context = LocalContext.current
     val openDialog = remember { mutableStateOf(false) }
+    val authState = authViewModel.authState.observeAsState()
+
 
 
     Column(
@@ -41,17 +48,33 @@ fun Principal(navController: NavController) {
             .fillMaxSize()
             .background(color = MaterialTheme.colorScheme.background),
     ) {
-        Button(
-            onClick = { navController.navigate(Rutas.Login.route) },
-            modifier = Modifier.padding(10.dp, 5.dp, 0.dp, 0.dp),
-            shape = MaterialTheme.shapes.extraSmall)
-        {
-            Icon(
-                Icons.Rounded.AccountBox,
-                tint = MaterialTheme.colorScheme.primaryContainer,
-                contentDescription = "Icono lista de idiomas"
-            )
+        if (AuthState.Authenticated.equals(true)){
+            TextButton(
+                onClick = { authViewModel.signout() },
+                modifier = Modifier.padding(10.dp, 5.dp, 0.dp, 0.dp),
+                shape = MaterialTheme.shapes.extraSmall)
+            {
+                Text(
+                    "Cerrar Sesión"
+                )
+            }
+        }else{
+            TextButton(
+                onClick = { navController.navigate(Rutas.Login.route) },
+                modifier = Modifier.padding(10.dp, 5.dp, 0.dp, 0.dp),
+                shape = MaterialTheme.shapes.extraSmall)
+            {
+                Text(
+                    "Login"
+                )
+                Icon(
+                    Icons.Rounded.AccountBox,
+                    tint = MaterialTheme.colorScheme.primary,
+                    contentDescription = "Icono lista de idiomas"
+                )
+            }
         }
+
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
@@ -124,11 +147,11 @@ fun Cards(
     }
 }
 
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+/*@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, locale = "es")
 @Composable
 fun previewAyuda() {
     ProyectoMovilesTheme{
         Principal(navController = rememberNavController())
     }
-}
+}*/

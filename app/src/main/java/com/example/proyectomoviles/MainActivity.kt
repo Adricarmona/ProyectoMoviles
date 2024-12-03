@@ -17,6 +17,7 @@ import com.example.proyectomoviles.ui.LlantasScreen
 import com.example.proyectomoviles.ui.Principal
 import com.example.proyectomoviles.ui.auth.inicioSesion
 import com.example.proyectomoviles.ui.auth.registrarseSesion
+import com.example.proyectomoviles.ui.viewmodels.AuthViewModel
 
 class MainActivity : ComponentActivity() {
     private val viewModel: LlantasViewModel by viewModels()
@@ -33,18 +34,19 @@ class MainActivity : ComponentActivity() {
     fun AppNavigation() {
         val navController = rememberNavController()
         val llantasViewModel: LlantasViewModel by viewModels()
+        val authViewModel: AuthViewModel by viewModels()
 
         NavHost(
             navController = navController,
             startDestination = Rutas.Principal.route
         ) {
-            composable(Rutas.Principal.route) { Principal(navController) }
+            composable(Rutas.Principal.route) { Principal(navController, authViewModel) }
             composable(Rutas.Ayuda.route) { Ayuda(navController) }
             composable(Rutas.AcercaDe.route) { AcercaDe(navController) }
             composable(Rutas.Configuracion.route) { Configuracion(navController) }
             composable(Rutas.LlantasAPI.route) { LlantasScreen(llantasViewModel, navController) }
-            composable(Rutas.Login.route) { inicioSesion(navController) }
-            composable(Rutas.Register.route) { registrarseSesion(navController) }
+            composable(Rutas.Login.route) { inicioSesion(navController, authViewModel) }
+            composable(Rutas.Register.route) { registrarseSesion(navController, authViewModel) }
         }
     }
 }
