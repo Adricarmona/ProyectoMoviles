@@ -25,10 +25,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.proyectomoviles.ProyectoMovilesTheme
 
 @Composable
-fun registrarseSesion(){
+fun registrarseSesion(navController: NavController){
     var usuario = remember { mutableStateOf("") }
     var clave = remember { mutableStateOf("") }
     var resultado = remember {mutableStateOf("Sin resultado")}
@@ -89,6 +90,6 @@ fun registrarseSesion(){
 @Composable
 fun previewDatos() {
     ProyectoMovilesTheme{
-        registrarseSesion()
+        registrarseSesion(navController = NavController(context = LocalContext.current))
     }
 }
