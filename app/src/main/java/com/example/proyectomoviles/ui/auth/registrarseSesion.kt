@@ -1,6 +1,5 @@
 package com.example.proyectomoviles.ui.auth
 
-import android.content.res.Configuration
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -27,19 +26,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.proyectomoviles.ProyectoMovilesTheme
 import com.example.proyectomoviles.model.Rutas
 import com.example.proyectomoviles.ui.viewmodels.AuthState
 import com.example.proyectomoviles.ui.viewmodels.AuthViewModel
 
 @Composable
 fun registrarseSesion(navController: NavController, authViewModel: AuthViewModel){
-    var usuario by remember { mutableStateOf("") }
-    var clave by remember { mutableStateOf("") }
-    var resultado = remember {mutableStateOf("Sin resultado")}
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
     val authState = authViewModel.authState.observeAsState()
     var context = LocalContext.current
 
@@ -68,9 +64,9 @@ fun registrarseSesion(navController: NavController, authViewModel: AuthViewModel
             color = MaterialTheme.colorScheme.primary
         )
         OutlinedTextField(
-            value = usuario,
-            onValueChange = { it ->
-                usuario = it
+            value = email,
+            onValueChange = {
+                email = it
             },
             label = {
                 Text(text = "Nombre de usuario")
@@ -78,12 +74,11 @@ fun registrarseSesion(navController: NavController, authViewModel: AuthViewModel
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
-            singleLine = true
         )
         OutlinedTextField(
-            value = clave,
-            onValueChange = { it ->
-                clave = it
+            value = password,
+            onValueChange = {
+                password = it
             },
             label = {
                 Text(text = "Contraseña usuario")
@@ -91,14 +86,13 @@ fun registrarseSesion(navController: NavController, authViewModel: AuthViewModel
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
-            singleLine = true,
             visualTransformation =  PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         )
         Button(
             onClick = {
-                authViewModel.signup(usuario, clave)
-            }
+                authViewModel.signup(email, password)
+            }, enabled = authState.value != AuthState.Loading
         ){
                 Text("Registrarse")
             }

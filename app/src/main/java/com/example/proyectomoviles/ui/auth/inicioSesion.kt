@@ -59,7 +59,7 @@ fun inicioSesion(navController: NavController, authViewModel: AuthViewModel){
         )
         OutlinedTextField(
             value = usuario,
-            onValueChange = { it ->
+            onValueChange = {
                 usuario = it
             },
             label = {
@@ -72,7 +72,7 @@ fun inicioSesion(navController: NavController, authViewModel: AuthViewModel){
         )
         OutlinedTextField(
             value = clave,
-            onValueChange = { it ->
+            onValueChange = {
                 clave = it
             },
             label = {

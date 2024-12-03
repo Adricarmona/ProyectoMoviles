@@ -48,31 +48,37 @@ fun Principal(navController: NavController, authViewModel: AuthViewModel) {
             .fillMaxSize()
             .background(color = MaterialTheme.colorScheme.background),
     ) {
-        if (AuthState.Authenticated.equals(true)){
-            TextButton(
-                onClick = { authViewModel.signout() },
-                modifier = Modifier.padding(10.dp, 5.dp, 0.dp, 0.dp),
-                shape = MaterialTheme.shapes.extraSmall)
-            {
-                Text(
-                    "Cerrar Sesión"
+        when(authState.value) {
+            is AuthState.Authenticated -> {
+                TextButton(
+                    onClick = { authViewModel.signout() },
+                    modifier = Modifier.padding(10.dp, 5.dp, 0.dp, 0.dp),
+                    shape = MaterialTheme.shapes.extraSmall
                 )
+                {
+                    Text(
+                        "Cerrar Sesión"
+                    )
+                }
             }
-        }else{
-            TextButton(
-                onClick = { navController.navigate(Rutas.Login.route) },
-                modifier = Modifier.padding(10.dp, 5.dp, 0.dp, 0.dp),
-                shape = MaterialTheme.shapes.extraSmall)
-            {
-                Text(
-                    "Login"
-                )
-                Icon(
-                    Icons.Rounded.AccountBox,
-                    tint = MaterialTheme.colorScheme.primary,
-                    contentDescription = "Icono lista de idiomas"
-                )
+            else -> {
+                TextButton(
+                    onClick = { navController.navigate(Rutas.Login.route) },
+                    modifier = Modifier.padding(10.dp, 5.dp, 0.dp, 0.dp),
+                    shape = MaterialTheme.shapes.extraSmall)
+                {
+                    Text(
+                        "Login"
+                    )
+                    Icon(
+                        Icons.Rounded.AccountBox,
+                        tint = MaterialTheme.colorScheme.primary,
+                        contentDescription = "Icono lista de idiomas"
+                    )
+                }
             }
+
+        }
         }
 
         Column(
@@ -117,7 +123,6 @@ fun Principal(navController: NavController, authViewModel: AuthViewModel) {
             }
         }
     }
-}
 
 
 @Composable
