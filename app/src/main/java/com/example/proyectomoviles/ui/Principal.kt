@@ -45,6 +45,7 @@ fun Principal(navController: NavController, authViewModel: AuthViewModel) {
     val user = Firebase.auth.currentUser
     val email = user?.email
 
+
     Column(
         modifier = Modifier
             .fillMaxSize()
