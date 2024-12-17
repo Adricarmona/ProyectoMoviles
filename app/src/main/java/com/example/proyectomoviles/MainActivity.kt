@@ -17,6 +17,7 @@ import com.example.proyectomoviles.ui.LlantasScreen
 import com.example.proyectomoviles.ui.Principal
 import com.example.proyectomoviles.ui.auth.inicioSesion
 import com.example.proyectomoviles.ui.auth.registrarseSesion
+import com.example.proyectomoviles.ui.navigationdrawer.NavigationDrawer
 import com.example.proyectomoviles.ui.viewmodels.AuthViewModel
 
 class MainActivity : ComponentActivity() {
@@ -26,6 +27,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ProyectoMovilesTheme {
+                NavigationDrawer()
                 AppNavigation()
             }
         }
