@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -22,6 +23,7 @@ import com.example.proyectomoviles.ui.viewmodels.AuthViewModel
 
 class MainActivity : ComponentActivity() {
     private val viewModel: LlantasViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -48,6 +50,7 @@ class MainActivity : ComponentActivity() {
             composable(Rutas.LlantasAPI.route) { LlantasScreen(llantasViewModel, navController) }
             composable(Rutas.Login.route) { inicioSesion(navController, authViewModel) }
             composable(Rutas.Register.route) { registrarseSesion(navController, authViewModel) }
+            //composable(Rutas.NavigationDrawer.route) { NavigationDrawer(navController, content) }
         }
     }
 }

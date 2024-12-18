@@ -10,7 +10,11 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.ExitToApp
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.MoreVert
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -29,14 +33,15 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.google.android.play.core.integrity.client.R
+import androidx.navigation.NavController
+import com.example.proyectomoviles.R
+import com.example.proyectomoviles.model.Rutas
 import kotlinx.coroutines.launch
-
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavigationDrawer(
+    //navController: NavController,
     content: @Composable (PaddingValues) -> Unit
 ) {
     val context = LocalContext.current
@@ -54,35 +59,55 @@ fun NavigationDrawer(
                     Text("EcoRing", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleLarge)
                     HorizontalDivider()
 
-                    Text("Pestañas", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleMedium)
                     NavigationDrawerItem(
                         label = { Text("RimAPI") },
                         selected = false,
                         onClick = { /* Handle click */ }
                     )
                     NavigationDrawerItem(
-                        label = { "context.getString(R.)" },
+                        label = { Text(context.getString(R.string.perfil)) },
                         selected = false,
-                        onClick = { /* Handle click */ }
+                        onClick = { /* navController.navigate(Rutas.Ayuda.route ) */ }
                     )
-
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
-                    Text("Section 2", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleMedium)
                     NavigationDrawerItem(
-                        label = { Text("Settings") },
+                        label = { Text(context.getString(R.string.iniciarsesion)) },
+                        selected = false,
+                        icon = { Icon(Icons.Outlined.AccountCircle, contentDescription = null) },
+                        onClick = { /*navController.navigate(Rutas.Login.route)*/ }
+                    )
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+
+                    NavigationDrawerItem(
+                        label = { Text(context.getString(R.string.configuracion)) },
                         selected = false,
                         icon = { Icon(Icons.Outlined.Settings, contentDescription = null) },
-                        badge = { Text("20") }, // Placeholder
                         onClick = { /* Handle click */ }
                     )
                     NavigationDrawerItem(
-                        label = { Text("Help and feedback") },
+                        label = { Text(context.getString(R.string.Ayuda)) },
                         selected = false,
-                        icon = { Icon(Icons.Outlined.MoreVert, contentDescription = null) },
+                        icon = { Icon(Icons.Outlined.Info, contentDescription = null) },
+                        onClick = { /* Handle click */ }
+                    )
+
+                    NavigationDrawerItem(
+                        label = { Text(context.getString(R.string.SobreNosotros)) },
+                        selected = false,
+                        icon = { Icon(Icons.Outlined.Person, contentDescription = null) },
                         onClick = { /* Handle click */ },
                     )
-                    Spacer(Modifier.height(12.dp))
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+
+                    NavigationDrawerItem(
+                        label = { Text(context.getString(R.string.salirAplicacion)) },
+                        selected = false,
+                        icon = { Icon(Icons.Outlined.ExitToApp, contentDescription = null) },
+                        onClick = { /* Handle click */ }
+                    )
+
+
                 }
             }
         },

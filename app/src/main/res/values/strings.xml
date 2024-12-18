@@ -51,4 +51,5 @@
     <string name="password">Password</string>
     <string name="notienescuenta">If you don\'t have an account, create one here</string>
     <string name="tienescuenta">If you have an account, login here</string>
+    <string name="perfil">Acount</string>
 </resources>

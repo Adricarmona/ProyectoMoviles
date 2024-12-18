@@ -8,4 +8,5 @@ sealed class Rutas(val route: String) {
     object LlantasAPI : Rutas("llantasApi")
     object Login : Rutas("inicioSession")
     object Register : Rutas("registrarseSesion")
+    object NavigationDrawer : Rutas("navigationdrawer")
 }
