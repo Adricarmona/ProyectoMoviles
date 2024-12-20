@@ -9,13 +9,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.example.proyectomoviles.ui.viewmodels.HomeViewModel
 
 @Composable
 fun Tareas(
-    viewModel: HomeViewModel = viewModel(factory = HomeViewModel.Factory),
-    navController: NavHostController
+    navController: NavController,
+    modifier: Modifier = Modifier,
+    viewModel: HomeViewModel = viewModel(factory = HomeViewModel.Factory) // ..1
 ) {
     val friendsList by viewModel.getAll().collectAsState(initial = emptyList()) // ..2
     var friendNameInput by remember { mutableStateOf("") }
