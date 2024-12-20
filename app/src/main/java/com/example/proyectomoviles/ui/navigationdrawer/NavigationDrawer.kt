@@ -103,6 +103,15 @@ fun NavigationDrawer() {
                         }
                     )
 
+                    NavigationDrawerItem(
+                        label = { Text("Tareas") },
+                        selected = false,
+                        onClick = {
+                            navController.navigate(Rutas.Tareas.route)
+                            scope.launch { drawerState.close() }
+                        }
+                    )
+
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
                     when(authState.value) {
                         AuthState.Authenticated -> {

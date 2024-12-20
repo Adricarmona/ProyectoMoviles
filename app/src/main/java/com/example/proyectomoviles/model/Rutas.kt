@@ -9,4 +9,5 @@ sealed class Rutas(val route: String) {
     object Login : Rutas("inicioSession")
     object Register : Rutas("registrarseSesion")
     object Perfil : Rutas("perfil")
+    object Tareas : Rutas("tareas")
 }
