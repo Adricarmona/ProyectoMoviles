@@ -51,4 +51,8 @@
     <string name="password">Password</string>
     <string name="notienescuenta">If you don\'t have an account, create one here</string>
     <string name="tienescuenta">If you have an account, login here</string>
+    <string name="perfil">Acount</string>
+    <string name="noestasautenticado">You are not authenticated</string>
+    <string name="Notas">Notes</string>
+    <string name="EliminarTodos">Eliminate all</string>
 </resources>

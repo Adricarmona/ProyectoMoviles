@@ -50,4 +50,8 @@
     <string name="password">Contraseña</string>
     <string name="notienescuenta">Si no tienes cuenta, crea una aquí</string>
     <string name="tienescuenta">Si ya tienes cuenta, inicia sesión aquí</string>
+    <string name="perfil">Perfil</string>
+    <string name="noestasautenticado">No estás autenticado</string>
+    <string name="Notas">Notas</string>
+    <string name="EliminarTodos">Eliminar todos</string>
 </resources>
