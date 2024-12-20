@@ -12,7 +12,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.proyectomoviles.ui.viewmodels.HomeViewModel
 
 @Composable
-fun HomeView(
+fun Tareas(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = HomeViewModel.Factory) // ..1
 ) {

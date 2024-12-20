@@ -46,6 +46,7 @@ import com.example.proyectomoviles.ui.Ayuda
 import com.example.proyectomoviles.ui.LlantasScreen
 import com.example.proyectomoviles.ui.Perfil
 import com.example.proyectomoviles.ui.Principal
+import com.example.proyectomoviles.ui.Tareas
 import com.example.proyectomoviles.ui.auth.inicioSesion
 import com.example.proyectomoviles.ui.auth.registrarseSesion
 import com.example.proyectomoviles.ui.usables.AlertDialogDoc
@@ -221,6 +222,8 @@ fun NavigationDrawer() {
                     composable(Rutas.Login.route) { inicioSesion(navController, authViewModel) }
                     composable(Rutas.Register.route) { registrarseSesion(navController, authViewModel) }
                     composable(Rutas.Perfil.route) { Perfil(navController, authViewModel) }
+                    composable(Rutas.Tareas.route) { Tareas() }
+
                 }
             }
         }
