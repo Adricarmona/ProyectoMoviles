@@ -52,6 +52,7 @@ import com.example.proyectomoviles.ui.auth.registrarseSesion
 import com.example.proyectomoviles.ui.usables.AlertDialogDoc
 import com.example.proyectomoviles.ui.viewmodels.AuthState
 import com.example.proyectomoviles.ui.viewmodels.AuthViewModel
+import com.example.proyectomoviles.ui.viewmodels.HomeViewModel
 import com.example.proyectomoviles.ui.viewmodels.LlantasViewModel
 import kotlinx.coroutines.launch
 
@@ -63,6 +64,7 @@ fun NavigationDrawer() {
     val scope = rememberCoroutineScope()
 
     val navController = rememberNavController()
+    val tareasViewModel: HomeViewModel = viewModel()
     val llantasViewModel: LlantasViewModel = viewModel()
     val authViewModel: AuthViewModel = viewModel()
 
@@ -222,7 +224,7 @@ fun NavigationDrawer() {
                     composable(Rutas.Login.route) { inicioSesion(navController, authViewModel) }
                     composable(Rutas.Register.route) { registrarseSesion(navController, authViewModel) }
                     composable(Rutas.Perfil.route) { Perfil(navController, authViewModel) }
-                    composable(Rutas.Tareas.route) { Tareas() }
+                    composable(Rutas.Tareas.route) { Tareas(tareasViewModel, navController) }
 
                 }
             }
