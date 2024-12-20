@@ -2,7 +2,8 @@ package com.example.proyectomoviles.model.tareas
 
 import android.content.Context
 
-class ContenedorMisTareas(context: Context) {
-    private val database = BaseDatosMisTareas.obtenerInstancia(context)
-    val repositorio: RepositorioMisTareas by lazy { RepositorioMisTareas(database.daoMisTareas()) }
+class MyFriendsContainer(private val context: Context) {
+    val myFriendsRepository: MyFriendsRepository by lazy {
+        MyFriendsRepository(MyFriendsDatabase.getMyFriendsDatabase(context).myFriendsDao())
+    }
 }

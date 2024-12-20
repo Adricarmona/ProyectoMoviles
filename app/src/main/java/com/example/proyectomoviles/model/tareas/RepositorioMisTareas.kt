@@ -1,15 +1,11 @@
 package com.example.proyectomoviles.model.tareas
 
-import kotlinx.coroutines.flow.Flow
+class MyFriendsRepository(private val myFriendsDao: MyFriendsDao) {
+    fun getAll() = myFriendsDao.getAll()
 
-class RepositorioMisTareas(private val dao: DaoMisTareas) {
-    val todasLasTareas: Flow<List<MiTarea>> = dao.obtenerTodasLasTareas()
+    suspend fun insertFriend(myFriend: MyFriend)
+            = myFriendsDao.insertFriend(myFriend)
 
-    suspend fun agregarTarea(tarea: MiTarea) {
-        dao.insertarTarea(tarea)
-    }
-
-    suspend fun borrarTarea(tarea: MiTarea) {
-        dao.eliminarTarea(tarea)
-    }
+    suspend fun deleteAllMyFriends(allMyFriends: List<MyFriend>)
+            = myFriendsDao.deleteAllMyFriends(allMyFriends)
 }

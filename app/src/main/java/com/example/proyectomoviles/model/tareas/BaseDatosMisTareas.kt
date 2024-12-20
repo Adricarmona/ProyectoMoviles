@@ -5,23 +5,23 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [MiTarea::class], version = 1, exportSchema = false)
-abstract class BaseDatosMisTareas : RoomDatabase() {
-    abstract fun daoMisTareas(): DaoMisTareas
+@Database(entities = [MyFriend::class], version = 1)
+abstract class MyFriendsDatabase: RoomDatabase() {
+    abstract fun myFriendsDao(): MyFriendsDao
 
     companion object {
         @Volatile
-        private var INSTANCE: BaseDatosMisTareas? = null
+        private var Instance: MyFriendsDatabase? = null
 
-        fun obtenerInstancia(context: Context): BaseDatosMisTareas {
-            return INSTANCE ?: synchronized(this) {
+        fun getMyFriendsDatabase(context: Context): MyFriendsDatabase {
+            return Instance ?: synchronized(this) {
                 Room.databaseBuilder(
                     context = context,
-                    klass = BaseDatosMisTareas::class.java,
-                    "tareas_database"
+                    klass = MyFriendsDatabase::class.java,
+                    name = "sample"
                 )
                     .build()
-                    .also { INSTANCE = it }
+                    .also { Instance = it }
             }
         }
     }
