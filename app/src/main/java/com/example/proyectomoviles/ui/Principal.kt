@@ -53,6 +53,11 @@ fun Principal(navController: NavController, authViewModel: AuthViewModel) {
                 { navController.navigate(Rutas.LlantasAPI.route) }
             )
             Spacer(modifier = Modifier.height(8.dp))
+            Cards(
+                "🗒"+context.getString(R.string.Notas),
+                { navController.navigate(Rutas.Tareas.route) }
+            )
+            Spacer(modifier = Modifier.height(8.dp))
             when(authState.value) {
                 AuthState.Authenticated -> {
                     Cards(

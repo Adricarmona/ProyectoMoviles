@@ -105,7 +105,7 @@ fun NavigationDrawer() {
                     )
 
                     NavigationDrawerItem(
-                        label = { Text("Tareas") },
+                        label = { Text(context.getString(R.string.Notas)) },
                         selected = false,
                         onClick = {
                             navController.navigate(Rutas.Tareas.route)

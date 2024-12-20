@@ -5,8 +5,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import com.example.proyectomoviles.R
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -18,6 +20,7 @@ fun Tareas(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = HomeViewModel.Factory) // ..1
 ) {
+    val context = LocalContext.current
     val friendsList by viewModel.getAll().collectAsState(initial = emptyList()) // ..2
     var friendNameInput by remember { mutableStateOf("") }
 
@@ -56,10 +59,10 @@ fun Tareas(
         ) {
             OutlinedTextField(value = friendNameInput, onValueChange = { friendNameInput = it })
             Button(onClick = { viewModel.insertFriend(friendNameInput) }) {
-                Text(text = "SAVE")
+                Text(text = context.getString(R.string.Guardar))
             }
             Button(onClick = { viewModel.deleteAllMyFriends(friendsList) }) {
-                Text(text = "ALL DELETE")
+                Text(text = context.getString(R.string.EliminarTodos))
             }
         }
     }
