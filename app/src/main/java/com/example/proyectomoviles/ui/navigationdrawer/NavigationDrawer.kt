@@ -1,6 +1,5 @@
 package com.example.proyectomoviles.ui.navigationdrawer
 
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -28,6 +27,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDrawerState
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -44,10 +44,12 @@ import com.example.proyectomoviles.model.Rutas
 import com.example.proyectomoviles.ui.AcercaDe
 import com.example.proyectomoviles.ui.Ayuda
 import com.example.proyectomoviles.ui.LlantasScreen
+import com.example.proyectomoviles.ui.Perfil
 import com.example.proyectomoviles.ui.Principal
 import com.example.proyectomoviles.ui.auth.inicioSesion
 import com.example.proyectomoviles.ui.auth.registrarseSesion
 import com.example.proyectomoviles.ui.usables.AlertDialogDoc
+import com.example.proyectomoviles.ui.viewmodels.AuthState
 import com.example.proyectomoviles.ui.viewmodels.AuthViewModel
 import com.example.proyectomoviles.ui.viewmodels.LlantasViewModel
 import kotlinx.coroutines.launch
@@ -64,6 +66,8 @@ fun NavigationDrawer() {
     val authViewModel: AuthViewModel = viewModel()
 
     val openDialog = remember { mutableStateOf(false) }
+
+    val authState = authViewModel.authState.observeAsState()
 
     ModalNavigationDrawer(
         drawerContent = {
@@ -82,43 +86,81 @@ fun NavigationDrawer() {
                     HorizontalDivider()
 
                     NavigationDrawerItem(
-                        label = { Text("RimAPI") },
+                        label = { Text("Menu") },
                         selected = false,
-                        onClick = { navController.navigate(Rutas.LlantasAPI.route) }
+                        onClick = {
+                            navController.navigate(Rutas.Principal.route)
+                            scope.launch { drawerState.close() }
+                        }
                     )
-                    NavigationDrawerItem(
-                        label = { Text(context.getString(R.string.perfil)) },
-                        selected = false,
-                        onClick = {  }
-                    )
-                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
                     NavigationDrawerItem(
-                        label = { Text(context.getString(R.string.iniciarsesion)) },
+                        label = { Text("RimAPI") },
                         selected = false,
-                        icon = { Icon(Icons.Outlined.AccountCircle, contentDescription = null) },
-                        onClick = { navController.navigate(Rutas.Login.route) }
+                        onClick = {
+                            navController.navigate(Rutas.LlantasAPI.route)
+                            scope.launch { drawerState.close() }
+                        }
                     )
+
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+                    when(authState.value) {
+                        AuthState.Authenticated -> {
+                            NavigationDrawerItem(
+                                label = { Text(context.getString(R.string.perfil)) },
+                                selected = false,
+                                onClick = {
+                                    navController.navigate(Rutas.Perfil.route)
+                                    scope.launch { drawerState.close() }
+                                }
+                            )
+                        }
+                        else -> {
+                            NavigationDrawerItem(
+                                label = { Text(context.getString(R.string.iniciarsesion)) },
+                                selected = false,
+                                icon = {
+                                    Icon(
+                                        Icons.Outlined.AccountCircle,
+                                        contentDescription = null
+                                    )
+                                },
+                                onClick = {
+                                    navController.navigate(Rutas.Login.route)
+                                    scope.launch { drawerState.close() }
+                                }
+                            )
+                        }
+                    }
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
                     NavigationDrawerItem(
                         label = { Text(context.getString(R.string.configuracion)) },
                         selected = false,
                         icon = { Icon(Icons.Outlined.Settings, contentDescription = null) },
-                        onClick = { navController.navigate(Rutas.Configuracion.route) }
+                        onClick = {
+                            navController.navigate(Rutas.Configuracion.route)
+                            scope.launch { drawerState.close() }
+                        }
                     )
                     NavigationDrawerItem(
                         label = { Text(context.getString(R.string.Ayuda)) },
                         selected = false,
                         icon = { Icon(Icons.Outlined.Info, contentDescription = null) },
-                        onClick = { navController.navigate(Rutas.Ayuda.route) }
+                        onClick = {
+                            navController.navigate(Rutas.Ayuda.route)
+                            scope.launch { drawerState.close() }
+                        }
                     )
 
                     NavigationDrawerItem(
                         label = { Text(context.getString(R.string.SobreNosotros)) },
                         selected = false,
                         icon = { Icon(Icons.Outlined.Person, contentDescription = null) },
-                        onClick = { /* Handle click */ },
+                        onClick = {
+                            navController.navigate(Rutas.AcercaDe.route)
+                            scope.launch { drawerState.close() }
+                                  },
                     )
                     HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 
@@ -140,7 +182,7 @@ fun NavigationDrawer() {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text("Navigation Drawer Example") },
+                    title = { Text("EcoRing") },
                     navigationIcon = {
                         IconButton(onClick = {
                             scope.launch {
@@ -169,6 +211,7 @@ fun NavigationDrawer() {
                     composable(Rutas.LlantasAPI.route) { LlantasScreen(llantasViewModel, navController) }
                     composable(Rutas.Login.route) { inicioSesion(navController, authViewModel) }
                     composable(Rutas.Register.route) { registrarseSesion(navController, authViewModel) }
+                    composable(Rutas.Perfil.route) { Perfil(navController, authViewModel) }
                 }
             }
         }

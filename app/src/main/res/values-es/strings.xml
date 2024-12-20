@@ -51,4 +51,5 @@
     <string name="notienescuenta">Si no tienes cuenta, crea una aquí</string>
     <string name="tienescuenta">Si ya tienes cuenta, inicia sesión aquí</string>
     <string name="perfil">Perfil</string>
+    <string name="noestasautenticado">No estás autenticado</string>
 </resources>
