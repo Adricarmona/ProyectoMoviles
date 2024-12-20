@@ -222,7 +222,7 @@ fun NavigationDrawer() {
                     composable(Rutas.Login.route) { inicioSesion(navController, authViewModel) }
                     composable(Rutas.Register.route) { registrarseSesion(navController, authViewModel) }
                     composable(Rutas.Perfil.route) { Perfil(navController, authViewModel) }
-                    composable(Rutas.Tareas.route) { Tareas() }
+                    composable(Rutas.Tareas.route) { Tareas(navController) }
 
                 }
             }
